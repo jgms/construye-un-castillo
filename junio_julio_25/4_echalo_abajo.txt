@@ -1,0 +1,349 @@
+#échalo abajo
+
+# primera parte
+
+repeticiones = 3;
+
+repeat 2{
+	
+	# tema
+
+	pulse 105;
+
+	basic_fm frequency: 465, attack: 3.25, release: 3, amplitude: 0.16, mod: 0.25, depth: 3630.245, pan: 0.4, delaytime: 0.875, feedback: 0.7; #uno*
+	simple_wave wave: 1, frequency: 525, attack: 0.25, release: 3.25, amplitude: 0.24, pan: -0.5, delaytime: 1.25, feedback: 0.8; #dos
+	wait 0.5;
+	simple_wave wave: 1, frequency: 315, attack: 0.25, release: 2.75, amplitude: 0.16, pan: 0.8, delaytime: 1.25, feedback: 0.8; #uno*
+	simple_wave wave: 0, frequency: 1170, attack: 0.25, release: 3, amplitude: 0.16, pan: -0.5, delaytime: 0.75, feedback: 0.8; #dos
+	wait 0.5;
+	basic_fm frequency: 900, attack: 3.25, release: 3.5, amplitude: 0.16, mod: 3, depth: 1273.300, pan: 0.1, delaytime: 0.125, feedback: 0.4; #uno*
+	basic_fm frequency: 930, attack: 2.75, release: 3, amplitude: 0.16, mod: 0.5, depth: 7454.111, pan: -0.8, delaytime: 0.125, feedback: 0.6; #dos
+	wait 0.5;
+	basic_fm frequency: 600, attack: 4, release: 3.5, amplitude: 0.16, mod: 3, depth: 265.445, pan: 1, delaytime: 0.875, feedback: 0.5; #uno*
+	simple_wave wave: 0, frequency: 1130, attack: 0.25, release: 3.75, amplitude: 0.20, pan: -0.1, delaytime: 0.5, feedback: 0.8; #dos
+	wait 0.5;
+	simple_wave wave: 1, frequency: 630, attack: 0.25, release: 4, amplitude: 0.24, pan: -0.8, delaytime: 0.75, feedback: 0.8; #uno*
+	simple_wave wave: 1, frequency: 630, attack: 0.25, release: 3.75, amplitude: 0.16, pan: 0.3, delaytime: 0.5, feedback: 0.8; #dos
+
+	pulse 90;
+
+	wait 6;
+
+	# riff A
+
+	repeat 2{
+		bass_line frequency: 375, attack: 0, release: 1.5, amplitude: 0.40, cutoff: 7072, pan: -0.6, delaytime: 0.125, feedback: 0.7;
+		wait 0.25;
+		basic_fm frequency: 112.5, attack: 0, release: 0.75, amplitude: 0.28, mod: 4.82, depth: 1590.246, pan: 0.5, delaytime: 0.375, feedback: 0.5;
+		wait 0.75;
+		bass_line frequency: 157.5, attack: 0, release: 0.75, amplitude: 0.24, cutoff: 3225.5, pan: -0.3, delaytime: 0.375, feedback: 0.8;
+		wait 0.75;
+		basic_fm frequency: 585, attack: 0, release: 1, amplitude: 0.20, mod: 4.34, depth: 5582.356, pan: -0.2, delaytime: 0.625, feedback: 0.8;
+		wait 0.75;
+		basic_fm frequency: 435, attack: 0, release: 0.5, amplitude: 0.28, mod: 2.48, depth: 7183.233, pan: 0.3, delaytime: 0.625, feedback: 0.9;
+		wait 0.75;
+		basic_fm frequency: 195, attack: 0, release: 0.75, amplitude: 0.20, mod: 2.99, depth: 4408.624, pan: 1, delaytime: 0.625, feedback: 0.8;
+		wait 1;
+	}
+
+	pulse 75;
+
+	# riff B
+
+	repeat repeticiones {
+		basic_fm frequency: 187.5, attack: 0, release: 1.25, amplitude: 0.24, mod: 4.76, depth: 5170.990, pan: -0.5, delaytime: 0.125, feedback: 0.6;
+		wait 0.75;
+		basic_fm frequency: 195, attack: 0, release: 0.5, amplitude: 0.20, mod: 4.99, depth: 9532.634, pan: -0.1, delaytime: 0.125, feedback: 0.5;
+		wait 0.75;
+		basic_fm frequency: 930, attack: 1.25, release: 0.5, amplitude: 0.28, mod: 4.64, depth: 7446.038, pan: -0.1, delaytime: 0.625, feedback: 0.6;
+		wait 0.25;
+		basic_fm frequency: 87.5, attack: 0, release: 1.25, amplitude: 0.36, mod: 2.12, depth: 6690.961, pan: 0.3, delaytime: 0.375, feedback: 0.6;
+		wait 0.75;
+		basic_synth frequency: 282.5, detune:3, attack: 1, release: 1, amplitude: 0.20, cutoff: 2009.5, q: 1, contour: 1, pan: -0.5, delaytime: 0.625, feedback: 0.7;
+		wait 0.25;
+		fm_in_series frequency: 292.5, attack: 0.5, sustain: 0.25, release: 0.25, amplitude: 0.32, modone: 3.84, depthone: 8463.400, oneattack: 0.25, onesustain: 0.25, onerelease: 1.5, modtwo: 1.47, depthtwo: 8165.646, twoattack: 0, twosustain: 0.75, tworelease: 0.5, pan: -1, delaytime: 0.375, feedback: 0.5;
+		wait 2;
+	}
+	repeticiones = repeticiones - 1;
+}
+
+# intermedio
+
+pulse 105;
+
+wait 1;
+
+repeat 3{
+	repeat 3{
+		silly_test_synth frequency: 78.75, attack: 0, release: 0.75, amplitude: 0.24, pan: -0.7, delaytime: 0.25, feedback: 0.9;
+		wait 0.75;
+		simple_wave wave: 2, frequency: 292.5, attack: 0.5, release: 1.25, amplitude: 0.32, pan: -0.7, delaytime: 0.125, feedback: 0.5;
+		wait 0.25;
+	}
+	basic_synth frequency: 105, detune:4, attack: 0, release: 1.25, amplitude: 0.20, cutoff: 9799, q: 20, contour: 0.8, pan: 0.3, delaytime: 0.375, feedback: 0.7;
+	wait 0.75;
+	repeat 2{
+		basic_fm frequency: 1050, attack: 0, release: 1.5, amplitude: 0.36, mod: 2.50, depth: 2679.600, pan: -0.9, delaytime: 0.75, feedback: 0.5;
+		wait 0.5;
+	}
+	basic_fm_env frequency: 480, attack: 0, sustain: 1, release: 0.25, amplitude: 0.40, mod: 1.02, depth: 3120.058, modattack: 0.5, modsustain: 0.5, modrelease: 1.25, pan: 0.9, delaytime: 0.625, feedback: 0.5;
+	wait 0.25;
+}
+
+pulse 75;
+
+wait 4;
+
+basic_fm frequency: 187.5, attack: 0, release: 1.25, amplitude: 0.24, mod: 4.76, depth: 5170.990, pan: -0.5, delaytime: 0.125, feedback: 0.6;
+wait 0.75;
+basic_fm frequency: 195, attack: 0, release: 0.5, amplitude: 0.20, mod: 4.99, depth: 9532.634, pan: -0.1, delaytime: 0.125, feedback: 0.5;
+wait 0.75;
+basic_fm frequency: 930, attack: 1.25, release: 0.5, amplitude: 0.28, mod: 4.64, depth: 7446.038, pan: -0.1, delaytime: 0.625, feedback: 0.6;
+wait 0.25;
+basic_fm frequency: 87.5, attack: 0, release: 1.25, amplitude: 0.36, mod: 2.12, depth: 6690.961, pan: 0.3, delaytime: 0.375, feedback: 0.6;
+wait 0.75;
+basic_synth frequency: 282.5, detune:3, attack: 1, release: 1, amplitude: 0.20, cutoff: 2009.5, q: 1, contour: 1, pan: -0.5, delaytime: 0.625, feedback: 0.7;
+wait 0.25;
+fm_in_series frequency: 292.5, attack: 0.5, sustain: 0.25, release: 0.25, amplitude: 0.32, modone: 3.84, depthone: 8463.400, oneattack: 0.25, onesustain: 0.25, onerelease: 1.5, modtwo: 1.47, depthtwo: 8165.646, twoattack: 0, twosustain: 0.75, tworelease: 0.5, pan: -1, delaytime: 0.375, feedback: 0.5;
+wait 3;
+
+# segunda parte
+
+pulse 105;
+
+vuelta = 1;
+
+repeat 2{
+	simple_wave wave: 1, frequency: 630, attack: 0.25, release: 3.75, amplitude: 0.16, pan: -0.3, delaytime: 0.5, feedback: 0.8; #uno*
+	simple_wave wave: 1, frequency: 630, attack: 0.25, release: 4, amplitude: 0.24, pan: 0.8, delaytime: 0.75, feedback: 0.8; #dos
+	wait 0.5;
+
+	if vuelta == 2{
+		basic_synth frequency: 157.5, detune:4, attack: 13, release: 14, amplitude: 0.15, cutoff: 10061.5, q: 20, contour: 0.6, pan: -1, delaytime: 2.5, feedback: 0.2;
+	}
+
+	simple_wave wave: 0, frequency: 1130, attack: 0.25, release: 3.75, amplitude: 0.20, pan: 0.1, delaytime: 0.5, feedback: 0.8; #uno*
+	basic_fm frequency: 600, attack: 4, release: 3.5, amplitude: 0.16, mod: 3, depth: 265.445, pan: -1, delaytime: 0.875, feedback: 0.5; #dos
+	wait 0.5;
+	basic_fm frequency: 930, attack: 2.75, release: 3, amplitude: 0.16, mod: 0.5, depth: 7454.111, pan: 0.8, delaytime: 0.125, feedback: 0.6; #uno*
+	basic_fm frequency: 900, attack: 3.25, release: 3.5, amplitude: 0.16, mod: 3, depth: 1273.300, pan: -0.1, delaytime: 0.125, feedback: 0.4; #dos
+	wait 0.5;
+
+	if vuelta == 2{
+		basic_fm frequency: 83.75, attack: 8, release: 16, amplitude: 0.15, mod: 0.5, depth: 9737.311, pan: 1, delaytime: 2.5, feedback: 0.2;
+	}
+
+	simple_wave wave: 0, frequency: 1170, attack: 0.25, release: 3, amplitude: 0.16, pan: 0.5, delaytime: 0.75, feedback: 0.8; #uno*
+	simple_wave wave: 1, frequency: 315, attack: 0.25, release: 2.75, amplitude: 0.16, pan: -0.8, delaytime: 1.25, feedback: 0.8; #dos
+	wait 0.5;
+	simple_wave wave: 1, frequency: 525, attack: 0.25, release: 3.25, amplitude: 0.24, pan: -0.5, delaytime: 1.25, feedback: 0.8; #uno*
+	basic_fm frequency: 465, attack: 3.25, release: 3, amplitude: 0.16, mod: 0.25, depth: 3630.245, pan: 0.4, delaytime: 0.875, feedback: 0.7; #dos
+	wait 4;
+	simple_wave wave: 1, frequency: 700, attack: 0.25, release: 3, amplitude: 0.24, pan: 0.6, delaytime: 0.75, feedback: 0.8; #uno*
+	simple_wave wave: 2, frequency: 900, attack: 0.25, release: 3.5, amplitude: 0.16, pan: -0.6, delaytime: 0.5, feedback: 0.8; #dos
+	wait 0.5;
+
+	if vuelta == 2{
+		basic_synth frequency: 120, detune:5, attack: 12, release: 8, amplitude: 0.15, cutoff: 3899, q: 17, contour: 0.7, pan: -1, delaytime: 2.5, feedback: 0.2;
+	}
+
+	basic_fm frequency: 282.5, attack: 3.75, release: 2.5, amplitude: 0.16, mod: 3, depth: 4421.557, pan: 0.4, delaytime: 1.5, feedback: 0.6; #uno*
+	simple_wave wave: 1, frequency: 435, attack: 0.25, release: 3.25, amplitude: 0.16, pan: -0.9, delaytime: 1.25, feedback: 0.8; #dos
+	wait 0.5;
+	simple_wave wave: 0, frequency: 900, attack: 0.25, release: 3.25, amplitude: 0.24, pan: 0.7, delaytime: 1.25, feedback: 0.8; #uno*
+	simple_wave wave: 0, frequency: 350, attack: 0.25, release: 3.5, amplitude: 0.24, pan: -0.7, delaytime: 1.25, feedback: 0.8; #dos
+	wait 0.5;
+	simple_wave wave: 1, frequency: 870, attack: 0.25, release: 3.25, amplitude: 0.16, pan: -0.3, delaytime: 0.5, feedback: 0.8; #uno*
+	basic_fm frequency: 900, attack: 2.75, release: 2.5, amplitude: 0.16, mod: 0.25, depth: 9960.074, pan: 0.3, delaytime: 1.125, feedback: 0.4; #dos
+	wait 0.5;
+	simple_wave wave: 2, frequency: 900, attack: 0.25, release: 3, amplitude: 0.24, pan: 0.1, delaytime: 1.25, feedback: 0.8; #uno*
+	basic_fm frequency: 175, attack: 3.5, release: 3.5, amplitude: 0.28, mod: 3, depth: 7981.606, pan: -0.3, delaytime: 1.375, feedback: 0.2; #dos
+	wait 4;
+	basic_fm frequency: 420, attack: 3.5, release: 3, amplitude: 0.28, mod: 2, depth: 5660.643, pan: 0.4, delaytime: 0.25, feedback: 0.8; #uno*
+	basic_fm frequency: 217.5, attack: 2.75, release: 3, amplitude: 0.16, mod: 0.125, depth: 8775.620, pan: 0.5, delaytime: 0.125, feedback: 0.5; #dos
+	wait 0.5;
+
+	if vuelta == 2{
+		basic_synth frequency: 83.75, detune:2, attack: 0, release: 16, amplitude: 0.20, cutoff: 1603.75, q: 14, contour: 1, pan: 1, delaytime: 2.5, feedback: 0.2;
+	}
+
+	simple_wave wave: 1, frequency: 670, attack: 0.25, release: 2.5, amplitude: 0.16, pan: -0.4, delaytime: 0.5, feedback: 0.8; #uno*
+	basic_fm frequency: 780, attack: 2.5, release: 3.25, amplitude: 0.16, mod: 0.25, depth: 286.863, pan: 0.6, delaytime: 1.5, feedback: 0.5; #dos
+	wait 0.5;
+	simple_wave wave: 1, frequency: 670, attack: 0.25, release: 3.5, amplitude: 0.24, pan: 0.8, delaytime: 1.25, feedback: 0.8; #uno*
+	simple_wave wave: 0, frequency: 550, attack: 0.25, release: 3.75, amplitude: 0.24, pan: -0.2, delaytime: 0.5, feedback: 0.8; #dos
+	wait 0.5;
+	simple_wave wave: 2, frequency: 390, attack: 0.25, release: 4, amplitude: 0.20, pan: 0.7, delaytime: 0.75, feedback: 0.8; #uno*
+	simple_wave wave: 2, frequency: 1130, attack: 0.25, release: 2.5, amplitude: 0.24, pan: 0.2, delaytime: 1.25, feedback: 0.8; #dos
+	wait 0.5;
+
+	if vuelta == 2{
+		basic_synth frequency: 93.75, detune:4, attack: 0, release: 13, amplitude: 0.15, cutoff: 8280.75, q: 18, contour: 0.7, pan: -1, delaytime: 2.5, feedback: 0.2;
+	}
+
+	basic_fm frequency: 780, attack: 3, release: 3.25, amplitude: 0.24, mod: 3, depth: 8434.908, pan: 0.4, delaytime: 1.375, feedback: 0.8; #uno*
+	simple_wave wave: 2, frequency: 300, attack: 0.25, release: 3.75, amplitude: 0.24, pan: -0.3, delaytime: 1.25, feedback: 0.8; #dos
+	wait 4;
+	simple_wave wave: 1, frequency: 375, attack: 0.25, release: 3.5, amplitude: 0.16, pan: 0.3, delaytime: 1.25, feedback: 0.8; #uno*
+	simple_wave wave: 2, frequency: 300, attack: 0.25, release: 2.5, amplitude: 0.24, pan: -0.1, delaytime: 1.25, feedback: 0.8; #dos
+	wait 0.5;
+
+	if vuelta == 2{
+		basic_fm frequency: 131.25, attack: 14, release: 14, amplitude: 0.15, mod: 0.5, depth: 2157.608, pan: 1, delaytime: 2.5, feedback: 0.2;
+	}
+
+	basic_fm frequency: 175, attack: 2.5, release: 4, amplitude: 0.20, mod: 3, depth: 8518.423, pan: -0.1, delaytime: 1.25, feedback: 0.3; #uno*
+	simple_wave wave: 0, frequency: 670, attack: 0.25, release: 3, amplitude: 0.24, pan: 0.5, delaytime: 0.5, feedback: 0.8; #dos
+	wait 0.5;
+	basic_fm frequency: 630, attack: 3.25, release: 3.25, amplitude: 0.16, mod: 0.125, depth: 7248.302, pan: 0.4, delaytime: 0.25, feedback: 0.5; #uno*
+	basic_fm frequency: 930, attack: 3.75, release: 3.25, amplitude: 0.16, mod: 0.5, depth: 1328.433, pan: -0.5, delaytime: 0.875, feedback: 0.4; #dos
+	wait 0.5;
+	basic_fm frequency: 585, attack: 2.5, release: 3.5, amplitude: 0.16, mod: 3, depth: 6515.238, pan: -0.6, delaytime: 1, feedback: 0.7; #uno*
+	basic_fm frequency: 300, attack: 4, release: 3.75, amplitude: 0.24, mod: 2, depth: 1580.272, pan: 0.9, delaytime: 1.25, feedback: 0.4; #dos
+	wait 0.5;
+
+	if vuelta == 2{
+		basic_synth frequency: 146.25, detune:1, attack: 0, release: 10, amplitude: 0.15, cutoff: 7796.25, q: 14, contour: 1, pan: -1, delaytime: 2.5, feedback: 0.2;
+	}
+
+	basic_fm frequency: 900, attack: 2.75, release: 3.5, amplitude: 0.16, mod: 0.5, depth: 2501.872, pan: 0.2, delaytime: 0.25, feedback: 0.7; #uno*
+	simple_wave wave: 0, frequency: 315, attack: 0.25, release: 2.5, amplitude: 0.16, pan: -1, delaytime: 1.25, feedback: 0.8; #dos
+	wait 4;
+	simple_wave wave: 0, frequency: 315, attack: 0.25, release: 2.5, amplitude: 0.16, pan: 1, delaytime: 1.25, feedback: 0.8; #uno*
+	basic_fm frequency: 900, attack: 2.75, release: 3.5, amplitude: 0.16, mod: 0.5, depth: 2501.872, pan: -0.2, delaytime: 0.25, feedback: 0.7; #dos
+	wait 0.5;
+	basic_fm frequency: 300, attack: 4, release: 3.75, amplitude: 0.24, mod: 2, depth: 1580.272, pan: -0.9, delaytime: 1.25, feedback: 0.4; #uno*
+	basic_fm frequency: 585, attack: 2.5, release: 3.5, amplitude: 0.16, mod: 3, depth: 6515.238, pan: 0.6, delaytime: 1, feedback: 0.7; #dos
+	wait 0.5;
+	basic_fm frequency: 930, attack: 3.75, release: 3.25, amplitude: 0.16, mod: 0.5, depth: 1328.433, pan: -0.5, delaytime: 0.875, feedback: 0.4; #uno*
+	basic_fm frequency: 630, attack: 3.25, release: 3.25, amplitude: 0.16, mod: 0.125, depth: 7248.302, pan: 0.4, delaytime: 0.25, feedback: 0.5; #dos
+	wait 0.5;
+	simple_wave wave: 0, frequency: 670, attack: 0.25, release: 3, amplitude: 0.24, pan: 0.5, delaytime: 0.5, feedback: 0.8; #uno*
+	basic_fm frequency: 175, attack: 2.5, release: 4, amplitude: 0.20, mod: 3, depth: 8518.423, pan: -0.1, delaytime: 1.25, feedback: 0.3; #dos
+	wait 0.5;
+
+	if vuelta == 2{
+		basic_synth frequency: 87.5, detune:1, attack: 16, release: 10, amplitude: 0.15, cutoff: 6030.5, q: 1, contour: 0.7, pan: 1, delaytime: 2.5, feedback: 0.2;
+	}
+
+	simple_wave wave: 2, frequency: 300, attack: 0.25, release: 2.5, amplitude: 0.24, pan: -0.1, delaytime: 1.25, feedback: 0.8; #uno*
+	simple_wave wave: 1, frequency: 375, attack: 0.25, release: 3.5, amplitude: 0.16, pan: 0.3, delaytime: 1.25, feedback: 0.8; #dos
+	wait 4;
+	simple_wave wave: 2, frequency: 300, attack: 0.25, release: 3.75, amplitude: 0.24, pan: -0.3, delaytime: 1.25, feedback: 0.8; #uno*
+	basic_fm frequency: 780, attack: 3, release: 3.25, amplitude: 0.24, mod: 3, depth: 8434.908, pan: 0.4, delaytime: 1.375, feedback: 0.8; #dos
+	wait 0.5;
+	simple_wave wave: 2, frequency: 1130, attack: 0.25, release: 2.5, amplitude: 0.24, pan: 0.2, delaytime: 1.25, feedback: 0.8; #uno*
+	simple_wave wave: 2, frequency: 390, attack: 0.25, release: 4, amplitude: 0.20, pan: -0.7, delaytime: 0.75, feedback: 0.8; #dos
+	wait 0.5;
+
+	if vuelta == 2{
+		basic_synth frequency: 292.5, detune:4, attack: 0, release: 15, amplitude: 0.15, cutoff: 9831.5, q: 20, contour: 1, pan: -1, delaytime: 2.5, feedback: 0.2;
+	}
+
+	simple_wave wave: 0, frequency: 550, attack: 0.25, release: 3.75, amplitude: 0.24, pan: -0.2, delaytime: 0.5, feedback: 0.8; #uno*
+	simple_wave wave: 1, frequency: 670, attack: 0.25, release: 3.5, amplitude: 0.24, pan: 0.8, delaytime: 1.25, feedback: 0.8; #dos
+	wait 0.5;
+	basic_fm frequency: 780, attack: 2.5, release: 3.25, amplitude: 0.16, mod: 0.25, depth: 286.863, pan: -0.6, delaytime: 1.5, feedback: 0.5; #uno*
+	simple_wave wave: 1, frequency: 670, attack: 0.25, release: 2.5, amplitude: 0.16, pan: 0.4, delaytime: 0.5, feedback: 0.8; #dos
+	wait 0.5;
+
+	if vuelta == 2{
+		basic_synth frequency: 87.5, detune:1, attack: 0, release: 8, amplitude: 0.15, cutoff: 8853.5, q: 11, contour: 0.6, pan: 1, delaytime: 2.5, feedback: 0.2;
+	}
+
+	basic_fm frequency: 217.5, attack: 2.75, release: 3, amplitude: 0.16, mod: 0.125, depth: 8775.620, pan: 0.5, delaytime: 0.125, feedback: 0.5; #uno*
+	basic_fm frequency: 420, attack: 3.5, release: 3, amplitude: 0.28, mod: 2, depth: 5660.643, pan: -0.4, delaytime: 0.25, feedback: 0.8; #dos
+	wait 4;
+	basic_fm frequency: 175, attack: 3.5, release: 3.5, amplitude: 0.28, mod: 3, depth: 7981.606, pan: 0.3, delaytime: 1.375, feedback: 0.2; #uno*
+	simple_wave wave: 2, frequency: 900, attack: 0.25, release: 3, amplitude: 0.24, pan: -0.1, delaytime: 1.25, feedback: 0.8; #dos
+	wait 0.5;
+	basic_fm frequency: 900, attack: 2.75, release: 2.5, amplitude: 0.16, mod: 0.25, depth: 9960.074, pan: 0.3, delaytime: 1.125, feedback: 0.4; #uno*
+	simple_wave wave: 1, frequency: 870, attack: 0.25, release: 3.25, amplitude: 0.16, pan: -0.3, delaytime: 0.5, feedback: 0.8; #dos
+	wait 0.5;
+
+	if vuelta == 2{
+		basic_fm frequency: 116.25, attack: 0, release: 14, amplitude: 0.40, mod: 3, depth: 3128.693, pan: -1, delaytime: 2.5, feedback: 0.2;
+	}
+
+	simple_wave wave: 0, frequency: 350, attack: 0.25, release: 3.5, amplitude: 0.24, pan: -0.7, delaytime: 1.25, feedback: 0.8; #uno*
+	simple_wave wave: 0, frequency: 900, attack: 0.25, release: 3.25, amplitude: 0.24, pan: 0.7, delaytime: 1.25, feedback: 0.8; #dos
+	wait 0.5;
+	simple_wave wave: 1, frequency: 435, attack: 0.25, release: 3.25, amplitude: 0.16, pan: -0.9, delaytime: 1.25, feedback: 0.8; #uno*
+	basic_fm frequency: 282.5, attack: 3.75, release: 2.5, amplitude: 0.16, mod: 3, depth: 4421.557, pan: 0.4, delaytime: 1.5, feedback: 0.6; #dos
+	wait 0.5;
+	simple_wave wave: 2, frequency: 900, attack: 0.25, release: 3.5, amplitude: 0.16, pan: -0.6, delaytime: 0.5, feedback: 0.8; #uno*
+	simple_wave wave: 1, frequency: 700, attack: 0.25, release: 3, amplitude: 0.24, pan: 0.6, delaytime: 0.75, feedback: 0.8; #dos
+	wait 4;
+	basic_fm frequency: 465, attack: 3.25, release: 3, amplitude: 0.16, mod: 0.25, depth: 3630.245, pan: 0.4, delaytime: 0.875, feedback: 0.7; #uno*
+	simple_wave wave: 1, frequency: 525, attack: 0.25, release: 3.25, amplitude: 0.24, pan: -0.5, delaytime: 1.25, feedback: 0.8; #dos
+	wait 0.5;
+	simple_wave wave: 1, frequency: 315, attack: 0.25, release: 2.75, amplitude: 0.16, pan: 0.8, delaytime: 1.25, feedback: 0.8; #uno*
+	simple_wave wave: 0, frequency: 1170, attack: 0.25, release: 3, amplitude: 0.16, pan: -0.5, delaytime: 0.75, feedback: 0.8; #dos
+	wait 0.5;
+
+	if vuelta == 2{
+		basic_synth frequency: 93.75, detune:4, attack: 16, release: 15, amplitude: 0.15, cutoff: 8753.75, q: 11, contour: 1, pan: 1, delaytime: 2.5, feedback: 0.2;
+	}
+
+	basic_fm frequency: 900, attack: 3.25, release: 3.5, amplitude: 0.16, mod: 3, depth: 1273.300, pan: 0.1, delaytime: 0.125, feedback: 0.4; #uno*
+	basic_fm frequency: 930, attack: 2.75, release: 3, amplitude: 0.16, mod: 0.5, depth: 7454.111, pan: -0.8, delaytime: 0.125, feedback: 0.6; #dos
+	wait 0.5;
+
+	if vuelta == 2{
+		basic_synth frequency: 187.5, detune:3, attack: 16, release: 12, amplitude: 0.15, cutoff: 4531.5, q: 24, contour: 0.8, pan: -1, delaytime: 2.5, feedback: 0.2;
+	}
+
+	basic_fm frequency: 600, attack: 4, release: 3.5, amplitude: 0.16, mod: 3, depth: 265.445, pan: 1, delaytime: 0.875, feedback: 0.5; #uno*
+	simple_wave wave: 0, frequency: 1130, attack: 0.25, release: 3.75, amplitude: 0.20, pan: -0.1, delaytime: 0.5, feedback: 0.8; #dos
+	wait 0.5;
+
+	if vuelta == 2{
+		basic_fm frequency: 131.25, attack: 9, release: 12, amplitude: 0.16, mod: 2, depth: 5093.797, pan: 1, delaytime: 2.5, feedback: 0.2;
+	}
+
+	simple_wave wave: 1, frequency: 630, attack: 0.25, release: 4, amplitude: 0.24, pan: -0.8, delaytime: 0.75, feedback: 0.8; #uno*
+	simple_wave wave: 1, frequency: 630, attack: 0.25, release: 3.75, amplitude: 0.16, pan: 0.3, delaytime: 0.5, feedback: 0.8; #dos
+	wait 8;
+
+	vuelta = vuelta + 1;
+}
+
+wait 4;
+
+basic_synth frequency: 282.5, detune:4, attack: 11, release: 14, amplitude: 0.36, cutoff: 6577.5, q: 17, contour: 0.8, pan: 0, delaytime: 2.5, feedback: 0.2;
+
+wait 16;
+
+# tema
+
+basic_fm frequency: 465, attack: 3.25, release: 3, amplitude: 0.16, mod: 0.25, depth: 3630.245, pan: 0.4, delaytime: 0.875, feedback: 0.7; #uno*
+simple_wave wave: 1, frequency: 525, attack: 0.25, release: 3.25, amplitude: 0.24, pan: -0.5, delaytime: 1.25, feedback: 0.8; #dos
+wait 0.5;
+simple_wave wave: 1, frequency: 315, attack: 0.25, release: 2.75, amplitude: 0.16, pan: 0.8, delaytime: 1.25, feedback: 0.8; #uno*
+simple_wave wave: 0, frequency: 1170, attack: 0.25, release: 3, amplitude: 0.16, pan: -0.5, delaytime: 0.75, feedback: 0.8; #dos
+wait 0.5;
+basic_fm frequency: 900, attack: 3.25, release: 3.5, amplitude: 0.16, mod: 3, depth: 1273.300, pan: 0.1, delaytime: 0.125, feedback: 0.4; #uno*
+basic_fm frequency: 930, attack: 2.75, release: 3, amplitude: 0.16, mod: 0.5, depth: 7454.111, pan: -0.8, delaytime: 0.125, feedback: 0.6; #dos
+wait 0.5;
+basic_fm frequency: 600, attack: 4, release: 3.5, amplitude: 0.16, mod: 3, depth: 265.445, pan: 1, delaytime: 0.875, feedback: 0.5; #uno*
+simple_wave wave: 0, frequency: 1130, attack: 0.25, release: 3.75, amplitude: 0.20, pan: -0.1, delaytime: 0.5, feedback: 0.8; #dos
+wait 0.5;
+simple_wave wave: 1, frequency: 630, attack: 0.25, release: 4, amplitude: 0.24, pan: -0.8, delaytime: 0.75, feedback: 0.8; #uno*
+simple_wave wave: 1, frequency: 630, attack: 0.25, release: 3.75, amplitude: 0.16, pan: 0.3, delaytime: 0.5, feedback: 0.8; #dos
+
+# final
+
+pulse 90;
+
+wait 6;	
+bass_line frequency: 375, attack: 0, release: 1.5, amplitude: 0.40, cutoff: 7072, pan: -0.6, delaytime: 0.125, feedback: 0.7;
+wait 0.25;
+basic_fm frequency: 112.5, attack: 0, release: 0.75, amplitude: 0.28, mod: 4.82, depth: 1590.246, pan: 0.5, delaytime: 0.375, feedback: 0.5;
+wait 0.75;
+bass_line frequency: 157.5, attack: 0, release: 0.75, amplitude: 0.24, cutoff: 3225.5, pan: -0.3, delaytime: 0.375, feedback: 0.8;
+wait 0.75;
+basic_fm frequency: 585, attack: 0, release: 1, amplitude: 0.20, mod: 4.34, depth: 5582.356, pan: -0.2, delaytime: 0.625, feedback: 0.8;
+wait 0.75;
+basic_fm frequency: 435, attack: 0, release: 0.5, amplitude: 0.28, mod: 2.48, depth: 7183.233, pan: 0.3, delaytime: 0.625, feedback: 0.9;
+wait 0.75;
+basic_fm frequency: 195, attack: 0, release: 0.75, amplitude: 0.20, mod: 2.99, depth: 4408.624, pan: 1, delaytime: 0.625, feedback: 0.8;

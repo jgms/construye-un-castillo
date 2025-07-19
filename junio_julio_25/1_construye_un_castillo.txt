@@ -1,0 +1,308 @@
+#construye un castillo
+
+pulse 98;
+
+notas=[146.25,150,157.5,167.5,175,187.5,195,210,217.5,225,232.5,240,255,262.5,275,282.5,292.5,300,315,335,350];
+a=[146.25,150,157.5,167.5,175,187.5,195,210,217.5,225,232.5,240,255,262.5,275,282.5,292.5,300,315,335];
+b=[146.25,150,157.5,167.5,175,187.5,195,210,217.5,225,232.5,240,255,262.5,275,282.5,292.5,300,315];
+c=[146.25,150,157.5,167.5,175,187.5,195,210,217.5,225,232.5,240,255,262.5,275,282.5,292.5,300];
+d=[146.25,150,157.5,167.5,175,187.5,195,210,217.5,225,232.5,240,255,262.5,275,282.5,292.5];
+
+
+i = 0;
+ia = 0;
+ib = 0;
+ic = 0;
+id = 0;
+
+repeat 21{
+   nota = notas[i] / 2;
+   det = nota - 1.1;
+   basic_synth wave: 2, frequency: nota, cutoff: 500, q: 2, contour: 0.6, attack: 1, release: 4, amplitude: 0.23, pan: 1;
+   basic_synth wave: 2, frequency: det, cutoff: 500, q: 2, contour: 0.6, attack: 1, release: 4, amplitude: 0.23, pan: -1;
+   basic_synth wave: 2, frequency: notas[i], cutoff: 700, q: 12, contour: 0.6, release: 4, amplitude: 0.25;
+   wait 0.25;
+   nota = notas[ia] * 2;
+   simple_wave wave: 0, frequency: nota, release: 0.5, amplitude: 0.20, delaytime: 0.375, pan: 0.6;
+   wait 0.25;
+   nota = notas[ib] * 4;
+   simple_wave wave: 0, frequency: nota, release: 0.5, amplitude: 0.30, delaytime: 0.375, pan: -0.3;
+   wait 0.25;
+   nota = notas[ic] * 2;
+   simple_wave wave: 0, frequency: nota, release: 0.5, amplitude: 0.20, delaytime: 0.375, pan: 0.3;
+   wait 0.25;
+   nota = notas[id] * 8;
+   simple_wave wave: 0, frequency: nota, release: 0.5, amplitude: 0.10, delaytime: 0.375, pan: -0.6;
+   wait 0.25;
+   
+   siguiente = i + 5;
+
+   if siguiente > 20{
+      i = siguiente - 21;
+   }else{
+      i = siguiente;
+   }
+
+   siguiente = ia + 5;
+
+   if siguiente > 19{
+      ia = siguiente - 20;
+   }else{
+      ia = siguiente;
+   }
+
+   siguiente = ib + 5;
+
+   if siguiente > 18{
+      ib = siguiente - 19;
+   }else{
+      ib = siguiente;
+   }
+
+   siguiente = ic + 5;
+
+   if siguiente > 17{
+      ic = siguiente - 18;
+   }else{
+      ic = siguiente;
+   }
+
+   siguiente = id + 5;
+
+   if siguiente > 16{
+      id = siguiente - 17;
+   }else{
+      id = siguiente;
+   }
+}
+
+nota = notas[i] / 2;
+det = nota - 1.1;
+basic_synth wave: 2, frequency: nota, cutoff: 500, q: 2, contour: 0.4, attack: 2, release: 10, amplitude: 0.23, pan: 1;
+basic_synth wave: 2, frequency: det, cutoff: 500, q: 2, contour: 0.4, attack: 2, release: 10, amplitude: 0.23, pan: -1;
+basic_synth wave: 2, frequency: notas[0], cutoff: 700, q: 20, contour: 0.6, sustain: 4, release: 8, amplitude: 0.25;
+
+repeat 13{
+   nota = notas[ia] * 2;
+   simple_wave wave: 0, frequency: nota, release: 0.5, amplitude: 0.20, delaytime: 0.375, pan: -0.2;
+   wait 0.25;
+   nota = notas[ib] * 4;
+   simple_wave wave: 0, frequency: nota, release: 0.5, amplitude: 0.30, delaytime: 0.375, pan: -0.1;
+   wait 0.25;
+   nota = notas[ic] * 2;
+   simple_wave wave: 0, frequency: nota, release: 0.5, amplitude: 0.20, delaytime: 0.375, pan: 0;
+   wait 0.25;
+   nota = notas[id] * 8;
+   simple_wave wave: 0, frequency: nota, release: 0.5, amplitude: 0.10, delaytime: 0.375, pan: 0.3;
+   wait 0.25;
+}
+nota = notas[ia] * 2;
+simple_wave wave: 0, frequency: nota, release: 0.5, amplitude: 0.20, delaytime: 0.375;
+
+wait 2;
+
+pulse 118;
+
+base = 300;
+repeat 4{
+   simple_sequence instrument: 5, amount: 5, base: base, interval: 5, wait: 0, attack: 0.5, sustain: 2, release: 1, mod: 0.0625, depth: 20000, amplitude: 0.13, delaytime: 2, feedback: 0.9;
+   wait 1;
+   basic_fm_lfo frequency: 650, attack: 0, sustain: 2, release: 2, amplitude: 0.20, mod: 5, depth: 3000, lfo: 4.06;
+   wait 2;
+   basic_fm_lfo frequency: 650, attack: 0, sustain: 2, release: 2, amplitude: 0.20, mod: 3, depth: 3000, lfo: 4.06;
+   wait 1;
+   basic_fm_lfo frequency: 900, attack: 0, sustain: 2, release: 2, amplitude: 0.20, mod: 5, depth: 3000, lfo: 2.03;
+   wait 0.5;
+   base = base + 300;
+}
+
+pulse 236;
+
+wait 4;
+
+simple_wave wave: 1, frequency: 1100, attack: 0.25, release: 0.25, amplitude: 0.40, pan: 0.2, delaytime: 0.25, feedback: 0.7;
+wait 1;
+simple_wave wave: 1, frequency: 670, attack: 0.5, release: 0.25, amplitude: 0.25, pan: 0.2, delaytime: 0.25, feedback: 0.7;
+wait 1;
+simple_wave wave: 0, frequency: 350, attack: 0.75, release: 0.75, amplitude: 0.30, pan: -0.2, delaytime: 0.75, feedback: 0.7;
+wait 1;
+simple_wave wave: 1, frequency: 175, attack: 0.5, release: 1, amplitude: 0.25, pan: -0.1, delaytime: 1.25, feedback: 0.7;
+wait 0.25;
+simple_wave wave: 1, frequency: 375, attack: 1, release: 1.5, amplitude: 0.30, pan: 0.1, delaytime: 0.25, feedback: 0.7;
+wait 1;
+simple_wave wave: 1, frequency: 292.5, attack: 0.25, release: 0.75, amplitude: 0.45, pan: 0, delaytime: 0.75, feedback: 0.7;
+wait 1;
+simple_wave wave: 1, frequency: 315, attack: 0.5, release: 1, amplitude: 0.40, pan: -0.2, delaytime: 0.25, feedback: 0.7;
+wait 1.5;
+simple_wave wave: 0, frequency: 1050, attack: 0, release: 0.25, amplitude: 0.35, pan: -0.3, delaytime: 0.75, feedback: 0.7;
+
+wait 3.5;
+
+pulse 118;
+
+repeat 2{
+   repeat 4{
+      simple_sequence instrument: 5, amount: 5, base: 600, interval: 5, wait: 0, attack: 0, sustain: 0, release: 4, mod: 3.3, depth: 20000, amplitude: 0.15;
+      wait 0.5;
+      simple_sequence instrument: 5, amount: 5, base: 150, interval: 5, wait: 0, attack: 0, sustain: 0, release: 4, mod: 3.3, depth: 20000, amplitude: 0.05, pan: 0.5;
+      simple_sequence instrument: 5, amount: 5, base: 300, interval: 10, wait: 0.75, attack: 0, sustain: 0, release: 4, mod: 3.3, depth: 20000, amplitude: 0.10, pan: -0.5;
+      wait 0.125;
+      simple_sequence instrument: 5, amount: 5, base: 350, interval: 15, wait: 0.5, attack: 0, sustain: 0, release: 2, mod: 3.5, depth: 10000, amplitude: 0.10;
+      wait 2;
+      simple_sequence instrument: 5, amount: 5, base: 600, interval: 5, wait: 0, attack: 0.5, sustain: 2, release: 0.5, mod: 0.0625, depth: 20000, amplitude: 0.13;
+      wait 2.5;
+   }
+
+
+
+   basic_fm_lfo frequency: 600, attack: 0, sustain: 1, release: 2, amplitude: 0.10, mod: 0.6, depth: 3000, lfo: 4.06;
+   wait 1;
+   basic_fm_lfo frequency: 650, attack: 0, sustain: 2, release: 2, amplitude: 0.20, mod: 5, depth: 3000, lfo: 2.03;
+   wait 2;
+   basic_fm_lfo frequency: 600, attack: 0, sustain: 1, release: 4, amplitude: 0.10, mod: 0.4, depth: 3000, lfo: 16.24;
+   wait 1;
+   basic_fm_lfo frequency: 650, attack: 0, sustain: 2, release: 2, amplitude: 0.20, mod: 3, depth: 3000, lfo: 2.03;
+   wait 1.5;
+   basic_fm_lfo frequency: 900, attack: 0, sustain: 2, release: 2, amplitude: 0.20, mod: 5, depth: 3000, lfo: 2.03;
+   wait 2;
+}
+
+pulse 236;
+
+wait 4;
+
+simple_wave wave: 1, frequency: 1100, attack: 0.25, release: 0.25, amplitude: 0.40, pan: 0.2, delaytime: 0.25, feedback: 0.7;
+wait 1;
+simple_wave wave: 1, frequency: 670, attack: 0.5, release: 0.25, amplitude: 0.25, pan: 0.2, delaytime: 0.25, feedback: 0.7;
+wait 1;
+simple_wave wave: 0, frequency: 350, attack: 0.75, release: 0.75, amplitude: 0.30, pan: -0.2, delaytime: 0.75, feedback: 0.7;
+wait 1;
+simple_wave wave: 1, frequency: 175, attack: 0.5, release: 1, amplitude: 0.25, pan: -0.1, delaytime: 1.25, feedback: 0.7;
+wait 0.25;
+simple_wave wave: 1, frequency: 375, attack: 1, release: 1.5, amplitude: 0.30, pan: 0.1, delaytime: 0.25, feedback: 0.7;
+wait 1;
+simple_wave wave: 1, frequency: 292.5, attack: 0.25, release: 0.75, amplitude: 0.45, pan: 0, delaytime: 0.75, feedback: 0.7;
+wait 1;
+simple_wave wave: 1, frequency: 315, attack: 0.5, release: 1, amplitude: 0.40, pan: -0.2, delaytime: 0.25, feedback: 0.7;
+wait 1.5;
+simple_wave wave: 0, frequency: 1050, attack: 0, release: 0.25, amplitude: 0.35, pan: -0.3, delaytime: 0.75, feedback: 0.7;
+wait 1.5;
+simple_wave wave: 1, frequency: 282.5, attack: 0.5, release: 1.5, amplitude: 0.35, pan: 0.1, delaytime: 0.5, feedback: 0.7;
+wait 0.25;
+simple_wave wave: 0, frequency: 700, attack: 0.5, release: 0.5, amplitude: 0.25, pan: 0.3, delaytime: 1.25, feedback: 0.7;
+wait 0.25;
+simple_wave wave: 0, frequency: 600, attack: 1.5, release: 0.5, amplitude: 0.30, pan: 0, delaytime: 0.75, feedback: 0.7;
+wait 1;
+simple_wave wave: 0, frequency: 350, attack: 0.25, release: 0.75, amplitude: 0.40, pan: 0.2, delaytime: 0.75, feedback: 0.7;
+wait 0.75;
+simple_wave wave: 0, frequency: 840, attack: 0, release: 1, amplitude: 0.30, pan: -0.1, delaytime: 0.75, feedback: 0.7;
+simple_wave wave: 0, frequency: 450, attack: 0, release: 0.25, amplitude: 0.50, pan: 0, delaytime: 1.25, feedback: 0.7;
+wait 0.75;
+simple_wave wave: 0, frequency: 1170, attack: 0.75, release: 0.75, amplitude: 0.35, pan: 0.2, delaytime: 0.25, feedback: 0.7;
+wait 0.75;
+simple_wave wave: 0, frequency: 375, attack: 1, release: 0.5, amplitude: 0.25, pan: -0.3, delaytime: 0.5, feedback: 0.7;
+wait 0.5;
+simple_wave wave: 0, frequency: 210, attack: 0.5, release: 1, amplitude: 0.50, pan: 0.1, delaytime: 0.25, feedback: 0.7;
+wait 0.75;
+simple_wave wave: 1, frequency: 1170, attack: 0.75, release: 0.5, amplitude: 0.25, pan: 0.1, delaytime: 0.75, feedback: 0.7;
+wait 1.5;
+simple_wave wave: 1, frequency: 585, attack: 0, release: 1, amplitude: 0.45, pan: 0.2, delaytime: 0.5, feedback: 0.7;
+wait 1.5;
+simple_wave wave: 1, frequency: 1020, attack: 0.75, release: 1.5, amplitude: 0.45, pan: -0.2, delaytime: 0.5, feedback: 0.7;
+wait 1.5;
+simple_wave wave: 1, frequency: 1020, attack: 0.25, release: 1.5, amplitude: 0.25, pan: 0.1, delaytime: 0.25, feedback: 0.7;
+wait 0.5;
+simple_wave wave: 0, frequency: 525, attack: 1.5, release: 1.5, amplitude: 0.50, pan: 0.3, delaytime: 0.5, feedback: 0.7;
+wait 1;
+simple_wave wave: 1, frequency: 420, attack: 0, release: 0.25, amplitude: 0.30, pan: -0.1, delaytime: 1.25, feedback: 0.7;
+wait 0.75;
+simple_wave wave: 1, frequency: 960, attack: 0.5, release: 0.5, amplitude: 0.40, pan: -0.3, delaytime: 0.75, feedback: 0.7;
+wait 1.5;
+simple_wave wave: 0, frequency: 585, attack: 1.5, release: 0.25, amplitude: 0.50, pan: -0.1, delaytime: 0.5, feedback: 0.7;
+wait 0.25;
+simple_wave wave: 1, frequency: 870, attack: 0.75, release: 0.75, amplitude: 0.35, pan: 0.1, delaytime: 0.5, feedback: 0.7;
+wait 1;
+simple_wave wave: 0, frequency: 700, attack: 0, release: 1, amplitude: 0.40, pan: 0, delaytime: 0.25, feedback: 0.7;
+wait 1;
+simple_wave wave: 0, frequency: 450, attack: 1, release: 0.25, amplitude: 0.30, pan: 0, delaytime: 0.25, feedback: 0.7;
+wait 1.5;
+simple_wave wave: 1, frequency: 960, attack: 1.5, release: 1, amplitude: 0.40, pan: -0.1, delaytime: 1.25, feedback: 0.7;
+simple_wave wave: 0, frequency: 275, attack: 0, release: 0.5, amplitude: 0.50, pan: -0.2, delaytime: 1.25, feedback: 0.7;
+wait 0.5;
+simple_wave wave: 1, frequency: 420, attack: 0, release: 0.5, amplitude: 0.45, pan: 0.3, delaytime: 0.25, feedback: 0.7;
+simple_wave wave: 1, frequency: 630, attack: 1.5, release: 0.75, amplitude: 0.25, pan: -0.3, delaytime: 0.25, feedback: 0.7;
+simple_wave wave: 0, frequency: 525, attack: 0.75, release: 1, amplitude: 0.35, pan: -0.1, delaytime: 0.25, feedback: 0.7;
+wait 0.5;
+simple_wave wave: 0, frequency: 217.5, attack: 0.5, release: 0.75, amplitude: 0.25, pan: 0, delaytime: 0.75, feedback: 0.7;
+wait 1.5;
+simple_wave wave: 1, frequency: 780, attack: 0.5, release: 0.25, amplitude: 0.35, pan: -0.1, delaytime: 1.25, feedback: 0.7;
+wait 0.5;
+simple_wave wave: 1, frequency: 960, attack: 0.25, release: 1.5, amplitude: 0.30, pan: -0.3, delaytime: 0.25, feedback: 0.7;
+wait 1;
+simple_wave wave: 1, frequency: 292.5, attack: 1.5, release: 0.25, amplitude: 0.40, pan: 0.2, delaytime: 0.25, feedback: 0.7;
+wait 0.75;
+simple_wave wave: 0, frequency: 262.5, attack: 0.75, release: 1.5, amplitude: 0.25, pan: 0, delaytime: 0.25, feedback: 0.7;
+simple_wave wave: 1, frequency: 390, attack: 0.25, release: 1, amplitude: 0.40, pan: 0.2, delaytime: 0.25, feedback: 0.7;
+wait 1.5;
+simple_wave wave: 1, frequency: 282.5, attack: 0.75, release: 0.25, amplitude: 0.25, pan: 0, delaytime: 0.75, feedback: 0.7;
+wait 0.5;
+simple_wave wave: 1, frequency: 1020, attack: 1, release: 1, amplitude: 0.35, pan: -0.3, delaytime: 1.25, feedback: 0.7;
+wait 1;
+simple_wave wave: 0, frequency: 240, attack: 0.25, release: 0.25, amplitude: 0.35, pan: 0, delaytime: 0.5, feedback: 0.7;
+wait 0.5;
+simple_wave wave: 0, frequency: 960, attack: 1, release: 0.5, amplitude: 0.30, pan: -0.1, delaytime: 0.75, feedback: 0.7;
+wait 1;
+simple_wave wave: 0, frequency: 195, attack: 0, release: 0.5, amplitude: 0.25, pan: 0, delaytime: 0.5, feedback: 0.7;
+wait 0.75;
+simple_wave wave: 0, frequency: 870, attack: 1, release: 1, amplitude: 0.45, pan: -0.3, delaytime: 0.75, feedback: 0.7;
+wait 0.25;
+simple_wave wave: 1, frequency: 1050, attack: 1.5, release: 0.75, amplitude: 0.45, pan: -0.1, delaytime: 1.25, feedback: 0.7;
+wait 1;
+simple_wave wave: 1, frequency: 240, attack: 1.5, release: 0.5, amplitude: 0.25, pan: 0, delaytime: 0.75, feedback: 0.7;
+wait 0.75;
+simple_wave wave: 1, frequency: 670, attack: 0, release: 0.25, amplitude: 0.45, pan: 0.1, delaytime: 0.25, feedback: 0.7;
+wait 0.75;
+simple_wave wave: 0, frequency: 282.5, attack: 1, release: 0.75, amplitude: 0.45, pan: 0.2, delaytime: 0.75, feedback: 0.7;
+wait 1.5;
+simple_wave wave: 1, frequency: 217.5, attack: 0.5, release: 1, amplitude: 0.50, pan: -0.3, delaytime: 0.25, feedback: 0.7;
+wait 0.5;
+
+wait 4;
+
+pulse 118;
+
+base = 300;
+repeat 4{
+   simple_sequence instrument: 5, amount: 5, base: base, interval: 5, wait: 0, attack: 0.5, sustain: 2, release: 1, mod: 0.0625, depth: 20000, amplitude: 0.13, delaytime: 2, feedback: 0.9;
+   wait 1;
+   basic_fm_lfo frequency: 650, attack: 0, sustain: 2, release: 2, amplitude: 0.20, mod: 5, depth: 3000, lfo: 4.06;
+   wait 2;
+   basic_fm_lfo frequency: 650, attack: 0, sustain: 2, release: 2, amplitude: 0.20, mod: 3, depth: 3000, lfo: 4.06;
+   wait 1;
+   basic_fm_lfo frequency: 900, attack: 0, sustain: 2, release: 2, amplitude: 0.20, mod: 5, depth: 3000, lfo: 2.03;
+   wait 0.5;
+   base = base + 300;
+}
+simple_sequence instrument: 5, amount: 5, base: 600, interval: 5, wait: 0, attack: 0.5, sustain: 2, release: 0.5, mod: 0.0625, depth: 20000, amplitude: 0.13;
+
+wait 3;
+
+pulse 236;
+
+
+
+simple_wave wave: 1, frequency: 1100, attack: 0.25, release: 0.25, amplitude: 0.40, pan: 0.2, delaytime: 0.25, feedback: 0.7;
+wait 1;
+simple_wave wave: 1, frequency: 670, attack: 0.5, release: 0.25, amplitude: 0.25, pan: 0.2, delaytime: 0.25, feedback: 0.7;
+wait 1;
+simple_wave wave: 0, frequency: 350, attack: 0.75, release: 0.75, amplitude: 0.30, pan: -0.2, delaytime: 0.75, feedback: 0.7;
+wait 1;
+simple_wave wave: 1, frequency: 175, attack: 0.5, release: 1, amplitude: 0.25, pan: -0.1, delaytime: 1.25, feedback: 0.7;
+wait 0.25;
+simple_wave wave: 1, frequency: 375, attack: 1, release: 1.5, amplitude: 0.30, pan: 0.1, delaytime: 0.25, feedback: 0.7;
+wait 1;
+simple_wave wave: 1, frequency: 292.5, attack: 0.25, release: 0.75, amplitude: 0.45, pan: 0, delaytime: 0.75, feedback: 0.7;
+wait 1;
+simple_wave wave: 1, frequency: 315, attack: 0.5, release: 1, amplitude: 0.40, pan: -0.2, delaytime: 0.25, feedback: 0.7;
+wait 1.5;
+simple_wave wave: 0, frequency: 1050, attack: 0, release: 0.25, amplitude: 0.35, pan: -0.3, delaytime: 0.75, feedback: 0.7;
