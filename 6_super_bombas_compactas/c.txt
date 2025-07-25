@@ -1,0 +1,109 @@
+# Tamakún y las 6 súper bombas compactas (c)
+
+notas=[150,157.5,167.5,175,187.5,195,210,217.5,225,232.5,240,255,262.5,275,282.5,292.5,300,315,335,350,375,390,420,435,450,465,480,510,525,550,565,585,600,630,670,700,750,780,840,870,900,930,960,1020,1050,1100,1130,1170];
+
+pulse 110;
+
+indices = [14,18,21,25,22,18,13];
+intervalos = [4,3,4,5,3,5,4];
+multiplos = [4,1,4,0.5,2,4,0.25];
+pans = [0.5,-0.6,0.9,-0.4,1,-0.8,0.4];
+
+
+vuelta = 1;
+amp = 0.2;
+ataque = 2;
+cut = 200;
+cont = 0.1;
+delay = 0;
+k = 47;
+j = 0;
+repeat 6{
+	i = 0;
+
+	repeat 7{
+
+		indice = indices[i];
+
+		repeat 4{
+
+			nota = notas[indice] * 2;
+
+			if vuelta > 2{ # melodía octavas
+
+				if vuelta > 4{
+					delay = 0.75;
+					ataque = ataque - 0.035;
+					cut = cut + 200;
+					cont = cont + 0.015;
+					amp = amp + 0.005;
+				}
+
+				top = notas[k] * multiplos[j]; 
+				simple_wave frequency: top, amplitude: 0.35, attack: 0.2, delaytime: delay, feedback: 0.8;
+
+				siguiente = k - 1;
+
+				if siguiente >= 0{
+					k = siguiente;
+				}else{
+					k = 47;
+				}
+			}
+
+			
+
+			basic_synth frequency: nota, amplitude: amp, attack: ataque, cutoff: cut, contour: cont, pan: pans[j];
+			wait 0.5; # reversa
+
+			indice = indice + intervalos[j];
+			
+			siguiente = j + 1;
+
+			if siguiente <= 6{
+				j = siguiente;
+			}else{
+				j = 0;
+			}
+
+		}
+
+		i = i + 1;
+	}
+	vuelta = vuelta + 1;
+}
+
+basic_fm_env frequency: 960, mod: 0.03125, depth: 1800, attack: 0, sustain: 20, release: 11, modattack: 10, modsustain: 0, modrelease: 10, pan: -1, amplitude: 0.18;
+wait 0.25;
+basic_fm_env frequency: 900, mod: 0.03125, depth: 1800, attack: 0, sustain: 20, release: 11, modattack: 10, modsustain: 0, modrelease: 10, pan: 1, amplitude: 0.18;
+wait 0.25;
+basic_fm_env frequency: 840, mod: 0.03125, depth: 1800, attack: 0, sustain: 20, release: 11, modattack: 10, modsustain: 0, modrelease: 10, pan: -0.5, amplitude: 0.18;
+wait 0.25;
+basic_fm_env frequency: 750, mod: 0.03125, depth: 1800, attack: 0, sustain: 20, release: 11, modattack: 10, modsustain: 0, modrelease: 10, pan: 0.5, amplitude: 0.18;
+wait 0.25;
+
+espera = 0.5;
+
+repeat 56{
+	top = notas[k] * multiplos[j]; 
+	simple_wave frequency: top, amplitude: 0.35, attack: 0.2, delaytime: 0.75, feedback: 0.8;
+	wait espera;
+
+	siguiente = k - 1;
+
+	if siguiente >= 0{
+		k = siguiente;
+	}else{
+		k = 47;
+	}
+
+	siguiente = j + 1;
+
+	if siguiente <= 6{
+		j = siguiente;
+	}else{
+		j = 0;
+	}
+
+	espera = espera + 0.01;
+}
