@@ -1,0 +1,91 @@
+# música para esperar al teléfono
+
+melodiaa=[0,420,525,585,420,525,0,525,630,700,630,525,0,525,630,670,630,525,0,525,630,700,630,525,0,480,585,670,585,480,0];
+basea=[350,0,0,0,0,0,420,0,0,0,0,0,435,0,0,0,0,0,420,0,0,0,0,0,390,0,0,0,0,0,375];
+
+melodiab=[0,525,420,565,525,435,0,630,510,670,630,525,0,780,630,840,780,670,0,870,700,930,870,750,0,1050,840,1130,1050,870,0,960,750,1020,960,780,0,780,630,840,780,670,0,630,510,670,630,525,0,525,420,565,525,435,0,630,510,670,630,525,0,780,630,840,780,670,0,870,700,930,870,750,0,1050,840,1130,1050,870,0,960,750,1020,960,780,0,780,630,840,780,670,0,630,510,670,630,525,0,585,465,630,585,480,0,700,585,780,700,600,0,870,700,930,870,750,0,1020,780,1050,1020,840];
+baseb=[350,0,0,420,0,525,0,0,0,585,0,0,700,0,630,0,0,0,525,0,0,420,0,435,0,0,0,630,0,0,525,0,670,0,0,0,700,0,0,630,0,525,0,0,0,420,0,0,390,0,480,0,0,0,585,0,0,0,0,0];
+
+pulse 118;
+
+vuelta = 1;
+repeticiones = 1;
+
+repeat 2{
+	repeat repeticiones{
+		i = 0;
+		repeat 31{
+			
+			if melodiaa[i] > 0{
+				basic_fm_env frequency: melodiaa[i], attack: 0.01, sustain: 1, release: 2, mod: 3.001, depth: 600, modattack: 0, modsustain: 0, modrelease: 0.5, pan: -0.2, amplitude: 0.2;
+			}
+
+			if basea[i] > 0{
+				basic_fm_env frequency: basea[i], attack: 0, sustain: 2, release: 1, mod: 0.5, depth: 2200, modattack: 0, modsustain: 0, modrelease: 2.5, pan: 0.4, amplitude: 0.25, delaytime: 1.5, feedback: 0.6;
+			}
+
+			wait 0.5;
+			i = i + 1;
+		}
+	}
+
+	basic_fm_env frequency: 350, attack: 0, sustain: 2, release: 1, mod: 0.5, depth: 2200, modattack: 0, modsustain: 0, modrelease: 2.5, pan: 0.4, amplitude: 0.25, delaytime: 1.5, feedback: 0.6;
+
+	if vuelta == 1{
+		wait 6;
+
+		pulse 59;
+
+		i = 0;
+		j = 0;
+		repeat 120{
+			
+			if melodiab[i] > 0{
+				basic_fm_env frequency: melodiab[i], attack: 0.01, sustain: 0.25, release: 1, mod: 4.01, depth: 900, modattack: 0, modsustain: 0, modrelease: 0.5, pan: 0.35, amplitude: 0.15;
+			}
+
+			if baseb[j] > 0{
+				basic_fm_env frequency: baseb[j], attack: 0, sustain: 2, release: 1, mod: 1.001, depth: 2200, modattack: 0, modsustain: 0.25, modrelease: 2.5, pan: -0.1, amplitude: 0.2, delaytime: 1.25, feedback: 0.4;
+			}
+
+			wait 0.25;
+			i = i + 1;
+			j = j + 1;
+
+			if j == 60{
+				j = 0;
+			}
+		}
+		
+
+		j = 0;
+		repeat 24{
+
+			if melodiab[j] > 0{
+				basic_fm_env frequency: melodiab[j], attack: 0.01, sustain: 0.25, release: 1, mod: 4.01, depth: 900, modattack: 0, modsustain: 0, modrelease: 0.5, pan: 0.35, amplitude: 0.15;
+			}
+
+			if j < 19{
+				if baseb[j] > 0{
+					basic_fm_env frequency: baseb[j], attack: 0, sustain: 2, release: 1, mod: 1.001, depth: 2200, modattack: 0, modsustain: 0.25, modrelease: 2.5, pan: -0.1, amplitude: 0.25, delaytime: 1.25, feedback: 0.3;
+				}
+			}
+
+			wait 0.25;
+			
+			j = j + 1;
+		}
+
+		wait 1.25;
+
+		basic_fm_env frequency: 375, attack: 0, sustain: 2, release: 1, mod: 1.001, depth: 2200, modattack: 0, modsustain: 0.25, modrelease: 2.5, pan: -0.2, amplitude: 0.2, delaytime: 1.5, feedback: 0.3;
+		wait 0.25;
+
+		basic_fm_env frequency: 350, attack: 0, sustain: 2, release: 1, mod: 1.001, depth: 2200, modattack: 0, modsustain: 0.25, modrelease: 2.5, pan: -0.2, amplitude: 0.2, delaytime: 1.5, feedback: 0.3;
+
+		pulse 118;
+
+	}
+	vuelta = vuelta + 1;
+	repeticiones = 4;
+}
