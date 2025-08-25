@@ -1,0 +1,77 @@
+# la risa fácil
+
+pulse 40;
+
+ratea = 1;
+rateb = -0.65;
+repeat 3{
+   loop_sample bank: 3, sample: 3, rate: ratea, duration: 20, envelope: 1, sustain: 10, release:10, pan: -1, amplitude: 0.15, delaytime: 0.75;
+   loop_sample bank: 3, sample: 3, rate: rateb, duration: 20, envelope: 1, sustain: 10, release: 10, pan: 1, amplitude: 0.15, delaytime: 0.5;
+   wait 4;
+   ratea = ratea + 1;
+   rateb = rateb - 0.65;
+}
+
+
+i = 0;
+samples = [7,8,9,10];
+pans = [0,-0.5,0.8,-0.45];
+amps = [0.5,0.35,0.35,0.5];
+delay = 1.5;
+repeat 4{
+    if i == 1{
+      basic_fm_env frequency: 390, mod: 0.0625, depth: 1800, attack: 0, sustain: 20, release: 11, modattack: 10, modsustain: 0, modrelease: 10, pan: 0, amplitude: 0.19;
+    }
+   play_sample bank: 1, sample: samples[i], pan: pans[i], amplitude: amps[i], delaytime: delay, feedback: 0.9;
+   wait 1;
+   play_sample bank: 0, sample: 18, pan: 0.4, amplitude: 0.4, delaytime: 0.0625, feedback: 0.9;
+   wait 1;
+   i = i + 1;
+   delay = delay - 0.5;
+   if delay == 0{
+      delay = 0.125;
+   }
+}
+loop_sample bank: 3, sample: 3, rate: ratea, duration: 20, envelope: 1, sustain: 10, release:10, pan: -1, amplitude: 0.15, delaytime: 0.75;
+loop_sample bank: 3, sample: 3, rate: rateb, duration: 20, envelope: 1, sustain: 10, release: 10, pan: 1, amplitude: 0.15, delaytime: 0.5;
+wait 3.5;
+play_sample bank: 1, sample: samples[3], pan: 0.35, amplitude: 0.5, delaytime: 0.125, feedback: 0.9;
+
+wait 10;
+
+pulse 160;
+
+notas = [390,780,840,335,960];
+
+repeat 4{
+   i = 0;
+   delaytime = 0;
+   repeat 5{
+
+      if i == 0{
+          amplitude = 0.25;
+      }else{
+         if i == 3{
+             amplitude = 0.2;
+         }else{
+            amplitude = 0.15;
+         }
+      }
+     
+      if i == 1{
+         delaytime = 1.5;
+      }
+
+      if i == 4{
+         play_sample bank: 1, sample: samples[2], pan: -0.4, amplitude: 0.4, delaytime: 1.5, feedback: 0.4;
+      }
+      
+      nota = notas[i] * 0.25;
+      basic_synth frequency: nota, cutoff: 1400, q: 8, contour: 0.35, attack: 0.1, sustain: 1, release: 1.5, pan: 0.25, amplitude: amplitude, delaytime: delaytime, feedback: 0.9;
+      wait 1;
+      i = i + 1;
+   }
+}
+wait 2;
+nota = notas[0] * 0.25;
+basic_synth frequency: nota, cutoff: 1400, q: 12, contour: 0.9, attack: 0, sustain: 2, release: 1.5, pan: 0.25, amplitude: 0.25, delaytime: 1, feedback: 0.9;
