@@ -1,0 +1,176 @@
+# e u r o b a s k e t
+
+pulse 105;
+
+pans = [-0.7,0.3,-0.1,0.8,-0.2,0];
+
+loop_sample_lfo bank: 1, sample: 15, top: 0.5, bottom: 0.3, lfo: 0.06, duration: 112, envelope: 1, attack: 4, sustain: 98, release: 10, amplitude: 0.1, pan: -0.85;
+loop_sample_lfo bank: 1, sample: 15, top: 0.53, bottom: 0.35, lfo: 0.06, duration: 112, envelope: 1, attack: 4, sustain: 98, release: 10, amplitude: 0.1, pan: 0.85;
+
+wait 8;
+
+esperaa = 6;
+esperab = 2;
+repeticiones = 1;
+seccion = 1;
+repeat 3{
+
+	play_sample bank: 3, sample: 11, rate: 0.225, amplitude: 0.5, pan: 0, delaytime: 1;
+
+	if seccion < 3{
+
+		wait esperaa;
+
+		vuelta = 1;
+		repeat 3{
+			loop_sample bank: 1, sample: 14, rate: 0.9, duration: 4, amplitude: 0.3, pan: 0.6;
+			loop_sample bank: 1, sample: 14, rate: 0.85, duration: 4, amplitude: 0.15, pan: 0.3;
+			loop_sample bank: 1, sample: 14, rate: 0.8, duration: 4, amplitude: 0.07, pan: 0;
+			if vuelta == 3{
+				play_sample bank: 3, sample: 11, rate: 0.45, amplitude: 0.4, pan: -0.65;
+			}
+			wait 4;
+			vuelta = vuelta + 1;
+		}
+
+		wait esperab;
+
+		repeat repeticiones{
+			# a
+			simple_wave wave: 2, frequency: 700, release: 1, amplitude: 0.5, pan: -1, delaytime: 0.75, feedback: 0.9;
+			simple_wave_gliss wave: 1, start: 700, end: 510, attack: 0, sustain: 1.49, release: 0.1, amplitude: 0.3, pan: -1;
+			# b
+			simple_wave wave: 2, frequency: 870, release: 1, amplitude: 0.5, pan: 1, delaytime: 0.75, feedback: 0.9;
+			simple_wave_gliss wave: 1, start: 870, end: 630, attack: 0, sustain: 1.49, release: 0.1, amplitude: 0.3, pan: 1;
+			wait 1.5;
+			#a
+			simple_wave wave: 2, frequency: 510, release: 1, amplitude: 0.5, pan: -1, delaytime: 0.75, feedback: 0.9;
+			#b
+			simple_wave wave: 2, frequency: 630, release: 1, amplitude: 0.5, pan: 1, delaytime: 0.75, feedback: 0.9;
+
+			wait 0.5;
+
+			i = 0;
+			sample = 10;
+			repeat 4{
+				amp = 0.5;
+				if sample == 10{
+					amp = 0.4;
+				}
+				if sample == 11{
+					amp = 0.2;
+				}
+				if sample == 13{
+					amp = 0.2;
+				}
+				play_sample bank: 0, sample: sample, amplitude: amp, pan: pans[i], delaytime: 1.25;
+				wait 0.25;
+				sample = sample + 1;
+				i = i + 1;
+			}
+
+			# a
+			simple_wave wave: 2, frequency: 750, release: 1, amplitude: 0.5, pan: -1, delaytime: 0.75, feedback: 0.9;
+			simple_wave_gliss wave: 1, start: 750, end: 550, attack: 0, sustain: 1.49, release: 0.1, amplitude: 0.3, pan: -1;
+			# b
+			simple_wave wave: 2, frequency: 870, release: 1, amplitude: 0.5, pan: 1, delaytime: 0.75, feedback: 0.9;
+			simple_wave_gliss wave: 1, start: 870, end: 700, attack: 0, sustain: 1.49, release: 0.1, amplitude: 0.3, pan: 1;
+			wait 1.5;
+			# a
+			simple_wave wave: 2, frequency: 550, release: 1, amplitude: 0.5, pan: -1, delaytime: 0.75, feedback: 0.9;
+			simple_wave_gliss wave: 1, start: 550, end: 900, attack: 0, sustain: 0.99, release: 0.1, amplitude: 0.3, pan: -1;
+			# b
+			simple_wave wave: 2, frequency: 700, release: 1, amplitude: 0.5, pan: 1, delaytime: 0.75, feedback: 0.9;
+			simple_wave_gliss wave: 1, start: 700, end: 1130, attack: 0, sustain: 0.99, release: 0.1, amplitude: 0.3, pan: 1;
+			wait 1;
+			# a
+			simple_wave wave: 2, frequency: 900, release: 1, amplitude: 0.5, pan: -1, delaytime: 0.75, feedback: 0.9;
+			# b
+			simple_wave wave: 2, frequency: 1130, release: 1, amplitude: 0.5, pan: 1, delaytime: 0.75, feedback: 0.9;
+
+			wait 0.5;
+
+			i = 0;
+			sample = 10;
+			repeat 6{
+				amp = 0.5;
+				if sample == 10{
+					amp = 0.4;
+				}
+				if sample == 11{
+					amp = 0.2;
+				}
+				if sample == 13{
+					amp = 0.2;
+				}
+				play_sample bank: 0, sample: sample, amplitude: amp, pan: pans[i], delaytime: 1.25;
+				wait 0.25;
+				sample = sample + 1;
+				i = i + 1;
+			}
+
+			# a
+			simple_wave wave: 2, frequency: 550, release: 1, amplitude: 0.5, pan: -1, delaytime: 0.75, feedback: 0.9;
+			simple_wave_gliss wave: 1, start: 550, end: 900, attack: 0, sustain: 0.99, release: 0.1, amplitude: 0.3, pan: -1;
+			# b
+			simple_wave wave: 2, frequency: 700, release: 1, amplitude: 0.5, pan: 1, delaytime: 0.75, feedback: 0.9;
+			simple_wave_gliss wave: 1, start: 700, end: 1130, attack: 0, sustain: 0.99, release: 0.1, amplitude: 0.3, pan: 1;
+			wait 1;
+			# a
+			simple_wave wave: 2, frequency: 900, release: 1, amplitude: 0.5, pan: -1, delaytime: 0.75, feedback: 0.9;
+			# b
+			simple_wave wave: 2, frequency: 1130, release: 1, amplitude: 0.5, pan: 1, delaytime: 0.75, feedback: 0.9;
+			wait 0.25;
+			# a
+			simple_wave wave: 2, frequency: 900, release: 1, amplitude: 0.6, pan: -1, delaytime: 0.75, feedback: 0.9;
+			simple_wave_gliss wave: 1, start: 900, end: 510, attack: 0, sustain: 1.49, release: 0.1, amplitude: 0.3, pan: -1;
+			# b
+			simple_wave wave: 2, frequency: 1130, release: 1, amplitude: 0.6, pan: 1, delaytime: 0.75, feedback: 0.9;
+			simple_wave_gliss wave: 1, start: 1130, end: 630, attack: 0, sustain: 1.49, release: 0.1, amplitude: 0.3, pan: 1;
+			wait 1.5;
+			# a
+			simple_wave wave: 2, frequency: 510, release: 1, amplitude: 0.5, pan: -1, delaytime: 0.75, feedback: 0.9;
+			# b
+			simple_wave wave: 2, frequency: 630, release: 1, amplitude: 0.5, pan: 1, delaytime: 0.75, feedback: 0.9;
+			wait 0.25;
+			# a
+			simple_wave wave: 2, frequency: 700, release: 1, amplitude: 0.5, pan: -1, delaytime: 0.75, feedback: 0.9;
+			simple_wave_gliss wave: 1, start: 700, end: 510, attack: 0, sustain: 1.49, release: 0.1, amplitude: 0.3, pan: -1;
+			# b
+			simple_wave wave: 2, frequency: 870, release: 1, amplitude: 0.5, pan: 1, delaytime: 0.75, feedback: 0.9;
+			simple_wave_gliss wave: 1, start: 870, end: 630, attack: 0, sustain: 1.49, release: 0.1, amplitude: 0.3, pan: 1;
+
+			wait 0.5;
+
+			i = 0;
+			sample = 10;
+			repeat 6{
+				amp = 0.5;
+				if sample == 10{
+					amp = 0.4;
+				}
+				if sample == 11{
+					amp = 0.2;
+				}
+				if sample == 13{
+					amp = 0.2;
+				}
+				play_sample bank: 0, sample: sample, amplitude: amp, pan: pans[i], delaytime: 1.25;
+				wait 0.25;
+				sample = sample + 1;
+				i = i + 1;
+			}
+
+			#a
+			simple_wave wave: 2, frequency: 510, release: 1, amplitude: 0.6, pan: -1, delaytime: 0.75, feedback: 0.9;
+			#b
+			simple_wave wave: 2, frequency: 630, release: 1, amplitude: 0.6, pan: 1, delaytime: 0.75, feedback: 0.9;
+
+			wait 1.5;
+		}
+	}
+	esperaa = 12;
+	esperab = 4;
+	repeticiones = 2;
+	seccion = seccion + 1;
+}
