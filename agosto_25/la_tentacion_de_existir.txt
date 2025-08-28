@@ -1,0 +1,152 @@
+# la tentación de existir
+
+pulse 76;
+
+loop_sample_lfo bank: 3, sample: 14, top: 0.7, bottom: 0.3, lfo: 0.03, duration: 60, envelope: 1, attack: 0, sustain: 52.5, release: 0.2, pan: -0.55, amplitude: 0.14, delaytime: 1, feedback: 0.9;
+loop_sample_lfo bank: 3, sample: 12, top: 0.7, bottom: 0.3, lfo: 0.03, duration: 60, envelope: 1, attack: 0, sustain: 52.5, release: 0.2, pan: 0.55, amplitude: 0.14, delaytime: 1, feedback: 0.9;
+
+wait 24;
+
+# a
+basic_fm_env frequency: 700, attack: 0, sustain: 1.5, release: 0.25, mod: 0.25, depth: 1234, modattack: 0.5, modsustain:0, modrelease: 1, pan: -0.4, amplitude: 0.25;
+# b
+simple_wave_lfo wave: 1, top: 870, bottom: 700, lfo: 0.9, attack: 1.5, sustain: 0, release: 0.25, pan: 0.3, amplitude: 0.28, delaytime: 0.75, feedback: 0.8;
+
+rate = 1;
+repeat 6{
+	play_sample bank: 1, sample: 2, rate: rate, amplitude: 0.08;
+	wait 0.25;
+	rate = rate * 0.8;
+}
+
+
+# a
+basic_fm_env frequency: 510, attack: 0, sustain: 1, release: 0.25, mod: 0.25, depth: 1234, modattack: 0.5, modsustain:0, modrelease: 0.5, pan: -0.4, amplitude: 0.25;
+# b
+simple_wave_lfo wave: 1, top: 630, bottom: 510, lfo: 1, attack: 1.5, sustain: 0, release: 0.25, pan: 0.3, amplitude: 0.28, delaytime: 0.75, feedback: 0.8;
+
+rate = 1;
+play_sample bank: 1, sample: 15, rate: 1, pan: 1, amplitude: 0.3;
+play_sample bank: 1, sample: 15, rate: 0.9, pan: -1, amplitude: 0.3;
+repeat 4{
+	play_sample bank: 1, sample: 2, rate: rate, amplitude: 0.08;
+	wait 0.25;
+	rate = rate * 0.8;
+}
+
+# a
+basic_fm_env frequency: 750, attack: 0, sustain: 1.5, release: 0.25, mod: 0.25, depth: 1234, modattack: 0.5, modsustain:0, modrelease: 1, pan: -0.4, amplitude: 0.25;
+# b
+simple_wave_lfo wave: 1, top: 870, bottom: 750, lfo: 1.1, attack: 1.5, sustain: 0, release: 0.25, pan: 0.3, amplitude: 0.28, delaytime: 0.75, feedback: 0.8;
+
+rate = 1;
+repeat 6{
+	play_sample bank: 1, sample: 2, rate: rate, amplitude: 0.08;
+	wait 0.25;
+	rate = rate * 0.8;
+}
+
+# a
+basic_fm_env frequency: 550, attack: 0, sustain: 1, release: 0.25, mod: 0.25, depth: 1234, modattack: 0.5, modsustain:0, modrelease: 0.25, pan: -0.4, amplitude: 0.25;
+# b
+simple_wave_lfo wave: 1, top: 700, bottom: 550, lfo: 1.2, attack: 1.5, sustain: 0, release: 0.25, pan: 0.3, amplitude: 0.28, delaytime: 0.75, feedback: 0.8;
+
+rate = 1;
+play_sample bank: 1, sample: 15, rate: 1, pan: 1, amplitude: 0.3;
+play_sample bank: 1, sample: 15, rate: 0.9, pan: -1, amplitude: 0.3;
+repeat 4{
+	play_sample bank: 1, sample: 2, rate: rate, amplitude: 0.08;
+	wait 0.25;
+	rate = rate * 0.8;
+}
+
+# a
+basic_fm_env frequency: 900, attack: 0, sustain: 1, release: 0.25, mod: 0.25, depth: 1234, modattack: 0.5, modsustain:0, modrelease: 0.5, pan: -0.4, amplitude: 0.25;
+# b
+simple_wave_lfo wave: 1, top: 1130, bottom: 900, lfo: 1.3, attack: 1.5, sustain: 0, release: 0.25, pan: 0.3, amplitude: 0.28, delaytime: 0.75, feedback: 0.8;
+
+rate = 1;
+play_sample bank: 1, sample: 15, rate: 1, pan: 1, amplitude: 0.3;
+play_sample bank: 1, sample: 15, rate: 0.9, pan: -1, amplitude: 0.3;
+repeat 4{
+	play_sample bank: 1, sample: 2, rate: rate, amplitude: 0.08;
+	wait 0.25;
+	rate = rate * 0.8;
+}
+
+# a
+basic_fm_env frequency: 550, attack: 0, sustain: 1, release: 0.25, mod: 0.25, depth: 1234, modattack: 0.5, modsustain:0, modrelease: 0.25, pan: -0.4, amplitude: 0.25;
+# b
+simple_wave_lfo wave: 1, top: 700, bottom: 550, lfo: 1.4, attack: 1.5, sustain: 0, release: 0.25, pan: 0.3, amplitude: 0.28, delaytime: 0.75, feedback: 0.8;
+
+rate = 1;
+play_sample bank: 1, sample: 15, rate: 1, pan: 1, amplitude: 0.3;
+play_sample bank: 1, sample: 15, rate: 0.9, pan: -1, amplitude: 0.3;
+repeat 4{
+	play_sample bank: 1, sample: 2, rate: rate, amplitude: 0.08;
+	wait 0.25;
+	rate = rate * 0.8;
+}
+
+# a
+basic_fm_env frequency: 900, attack: 0, sustain: 1, release: 0.25, mod: 0.25, depth: 1234, modattack: 0.5, modsustain:0, modrelease: 0.5, pan: -0.4, amplitude: 0.25;
+# b
+simple_wave_lfo wave: 1, top: 1130, bottom: 900, lfo: 1.5, attack: 1.5, sustain: 0, release: 0.25, pan: 0.3, amplitude: 0.28, delaytime: 0.75, feedback: 0.8;
+
+rate = 1;
+repeat 4{
+	play_sample bank: 1, sample: 2, rate: rate, amplitude: 0.08;
+	wait 0.25;
+	rate = rate * 0.8;
+}
+play_sample bank: 1, sample: 13, rate: 1, pan: -1, amplitude: 0.38;
+play_sample bank: 1, sample: 13, rate: 0.9, pan: 1, amplitude: 0.38;
+wait 2;
+
+# a
+basic_fm_env frequency: 900, attack: 0, sustain: 1.5, release: 0.25, mod: 0.25, depth: 1234, modattack: 0.5, modsustain:0, modrelease: 1, pan: -0.4, amplitude: 0.25;
+# b
+simple_wave_lfo wave: 1, top: 1130, bottom: 900, lfo: 1.4, attack: 1.5, sustain: 0, release: 0.25, pan: 0.3, amplitude: 0.28, delaytime: 0.75, feedback: 0.8;
+
+rate = 1;
+repeat 6{
+	play_sample bank: 1, sample: 2, rate: rate, amplitude: 0.08;
+	wait 0.25;
+	rate = rate * 0.8;
+}
+
+# a
+basic_fm_env frequency: 510, attack: 0, sustain: 1, release: 0.25, mod: 0.25, depth: 1234, modattack: 0.5, modsustain:0, modrelease: 0.5, pan: -0.4, amplitude: 0.25;
+# b
+simple_wave_lfo wave: 1, top: 630, bottom: 510, lfo: 1.2, attack: 1.5, sustain: 0, release: 0.25, pan: 0.3, amplitude: 0.28, delaytime: 0.75, feedback: 0.8;
+
+rate = 1;
+play_sample bank: 1, sample: 15, rate: 1, pan: 1, amplitude: 0.3;
+play_sample bank: 1, sample: 15, rate: 0.9, pan: -1, amplitude: 0.3;
+repeat 4{
+	play_sample bank: 1, sample: 2, rate: rate, amplitude: 0.08;
+	wait 0.25;
+	rate = rate * 0.8;
+}
+
+# a
+basic_fm_env frequency: 700, attack: 0, sustain: 1.5, release: 0.25, mod: 0.25, depth: 1234, modattack: 0.5, modsustain:0, modrelease: 1, pan: -0.4, amplitude: 0.25;
+# b
+simple_wave_lfo wave: 1, top: 870, bottom: 700, lfo: 1, attack: 1.5, sustain: 0, release: 0.25, pan: 0.3, amplitude: 0.28, delaytime: 0.75, feedback: 0.8;
+
+rate = 1;
+repeat 6{
+	play_sample bank: 1, sample: 2, rate: rate, amplitude: 0.08;
+	wait 0.25;
+	rate = rate * 0.8;
+}
+
+# a
+basic_fm_env frequency: 510, attack: 0, sustain: 1, release: 0.25, mod: 0.25, depth: 1234, modattack: 0.5, modsustain:0, modrelease: 0.5, pan: -0.4, amplitude: 0.25;
+# b
+simple_wave_lfo wave: 1, top: 630, bottom: 510, lfo: 0.8, attack: 1.5, sustain: 0, release: 0.25, pan: 0.3, amplitude: 0.28, delaytime: 0.75, feedback: 0.8;
+
+play_sample bank: 1, sample: 13, rate: 1, pan: -1, amplitude: 0.40;
+play_sample bank: 1, sample: 13, rate: 0.9, pan: 1, amplitude: 0.40;
+wait 2;
+
