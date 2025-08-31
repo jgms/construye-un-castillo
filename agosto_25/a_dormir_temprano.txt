@@ -1,0 +1,144 @@
+# a dormir temprano
+
+pulse 66;
+
+uno = [840,870,900,930,960,1020,1050,1100];
+dos = [565,585,600,630,670,700,750,780];
+tres = [450,465,480,510,525,550,565,585];
+cuatro = [300,315,335,350,375,390,420,435];
+cinco = [240,255,262.5,275,282.5,292.5,300,315];
+
+a = [3,0,3,5,3,0,3,5,3,0,6,4,2,0,3,5];
+b = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+c = [2,2,2,4,2,2,2,6,2,1,6,4,2,0,2,2];
+d = [2,2,0,0,2,2,0,0,2,2,0,0,2,2,0,0];
+e = [0,3,2,1,0,3,2,1,0,3,2,1,0,3,2,1];
+
+
+loop_sample_lfo bank: 0, sample: 7, top: 0.4, bottom: 0.04, lfo: 0.15, duration: 64, envelope: 1, attack: 0, sustain: 56, release: 8, pan: -1, amplitude: 0.2, delaytime: 1, feedback: 0.9;
+loop_sample_lfo bank: 0, sample: 6, top: 0.4, bottom: 0.04, lfo: 0.15, duration: 64, envelope: 1, attack: 0, sustain: 56, release: 8, pan: 1, amplitude: 0.2, delaytime: 0.5, feedback: 0.9;
+
+wait 8;
+
+loop_sample_lfo bank: 1, sample: 9, top: 1.1, bottom: 0.9, lfo: 2.75, reverse: 1, duration: 21, envelope: 1, attack: 0, sustain: 20.75, release: 0.25, pan: 0, amplitude: 0.4, delaytime: 0.25, feedback: 0.9;
+
+i = 0;
+repeat 16{
+	indice = e[i];
+	a_z_rotate min: 1, max: 5;
+	mod = random * 0.25;
+	a_z_rotate min: 500, max: 2100;
+	depth = random; 
+	basic_fm frequency: cinco[indice], mod: mod, depth: depth, attack: 0, sustain: 0, release: 1.5, pan: 0.5, amplitude: 0.3;
+	wait 0.25;
+	indice = d[i];
+	a_z_rotate min: 1, max: 5;
+	mod = random * 0.5;
+	a_z_rotate min: 500, max: 1100;
+	depth = random; 
+	basic_fm frequency: cuatro[indice], mod: mod, depth: depth, attack: 0, sustain: 0, release: 1.5, pan: -0.3, amplitude: 0.2, delaytime: 0.375;
+	wait 0.25;
+	indice = c[i];
+	a_z_rotate min: 1, max: 5;
+	mod = random * 0.5;
+	a_z_rotate min: 500, max: 1100;
+	depth = random; 
+	basic_fm frequency: tres[indice], mod: mod, depth: depth, attack: 0, sustain: 0, release: 1.5, pan: 0.3, amplitude: 0.2, delaytime: 0.375;
+	wait 0.25;
+	indice = b[i];
+	a_z_rotate min: 1, max: 5;
+	mod = random * 0.5;
+	a_z_rotate min: 500, max: 1100;
+	depth = random; 
+	basic_fm frequency: dos[indice], mod: mod, depth: depth, attack: 0, sustain: 0, release: 1.5, pan: -0.5, amplitude: 0.2, delaytime: 0.375;
+	wait 0.25;
+	indice = a[i];
+	a_z_rotate min: 1, max: 5;
+	mod = random * 0.5;
+	a_z_rotate min: 500, max: 1100;
+	depth = random; 
+	basic_fm frequency: uno[indice], mod: mod, depth: depth, attack: 0, sustain: 0, release: 1.5, pan: -0.1, amplitude: 0.25;
+	wait 0.25;
+    i = i + 1;
+}
+
+indice = e[0];
+a_z_rotate min: 1, max: 5;
+mod = random * 0.25;
+a_z_rotate min: 500, max: 2100;
+depth = random; 
+basic_fm frequency: cinco[indice], mod: 0.25, depth: depth, attack: 0, sustain: 0, release: 1.5, pan: 0.5, amplitude: 0.3;
+
+wait 6;
+
+repeat 2{
+	vuelta = 1;
+	repeat 2{
+		sample = 9;
+		repeat 6{
+			play_sample bank: 3, sample: sample, rate: 0.6, pan: 0.4, amplitude: 0.15;
+			wait 0.5;
+
+			if vuelta == 2{
+				play_sample bank: 1, sample: sample, rate: 0.7, pan: -0.2, amplitude: 0.4;
+				wait 0.5;
+			}
+			
+			sample = sample - 1;
+		}
+		vuelta = vuelta + 1; 
+	}
+}
+
+wait 8;
+
+loop_sample_lfo bank: 1, sample: 9, top: 1.1, bottom: 0.9, lfo: 2.75, reverse: 1, duration: 21, envelope: 1, attack: 0, sustain: 20.75, release: 0.25, pan: 0, amplitude: 0.4, delaytime: 0.25, feedback: 0.9;
+
+i = 0;
+repeat 16{
+	indice = e[i];
+	a_z_rotate min: 1, max: 5;
+	mod = random * 0.25;
+	a_z_rotate min: 500, max: 2100;
+	depth = random; 
+	basic_fm frequency: cinco[indice], mod: mod, depth: depth, attack: 0, sustain: 0, release: 1.5, pan: 0.5, amplitude: 0.3;
+	wait 0.25;
+	indice = d[i];
+	a_z_rotate min: 1, max: 5;
+	mod = random * 0.5;
+	a_z_rotate min: 500, max: 1100;
+	depth = random; 
+	basic_fm frequency: cuatro[indice], mod: mod, depth: depth, attack: 0, sustain: 0, release: 1.5, pan: -0.3, amplitude: 0.2, delaytime: 0.375;
+	wait 0.25;
+	indice = c[i];
+	a_z_rotate min: 1, max: 5;
+	mod = random * 0.5;
+	a_z_rotate min: 500, max: 1100;
+	depth = random; 
+	basic_fm frequency: tres[indice], mod: mod, depth: depth, attack: 0, sustain: 0, release: 1.5, pan: 0.3, amplitude: 0.2, delaytime: 0.375;
+	wait 0.25;
+	indice = b[i];
+	a_z_rotate min: 1, max: 5;
+	mod = random * 0.5;
+	a_z_rotate min: 500, max: 1100;
+	depth = random; 
+	basic_fm frequency: dos[indice], mod: mod, depth: depth, attack: 0, sustain: 0, release: 1.5, pan: -0.5, amplitude: 0.2, delaytime: 0.375;
+	wait 0.25;
+	indice = a[i];
+	a_z_rotate min: 1, max: 5;
+	mod = random * 0.5;
+	a_z_rotate min: 500, max: 1100;
+	depth = random; 
+	basic_fm frequency: uno[indice], mod: mod, depth: depth, attack: 0, sustain: 0, release: 1.5, pan: -0.1, amplitude: 0.25;
+	wait 0.25;
+    i = i + 1;
+}
+
+indice = e[0];
+a_z_rotate min: 1, max: 5;
+mod = random * 0.25;
+a_z_rotate min: 500, max: 2100;
+depth = random; 
+basic_fm frequency: cinco[indice], mod: 0.25, depth: depth, attack: 0, sustain: 0, release: 1.5, pan: 0.5, amplitude: 0.3;
+
+
