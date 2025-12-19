@@ -1,0 +1,72 @@
+# Tamakún y las 6 súper bombas compactas (b)
+
+notas=[150,157.5,167.5,175,187.5,195,210,217.5,225,232.5,240,255,262.5,275,282.5,292.5,300,315,335,350,375,390,420,435,450,465,480,510,525,550,565,585,600,630,670,700,750,780,840,870,900,930,960,1020,1050,1100,1130,1170];
+
+pulse 76;
+
+indices = [30,34,37,41,38,34,29];
+esperas = [3.5,2,5,2.5,4,5,3];
+i = 0;
+
+repeat 7{
+	indice = indices[i];
+	nota = notas[indice] * 2;
+	simple_sequence instrument: 5, base: nota, interval: 0, wait: esperas[i], amount: 10,attack: 0, release: 1.5, mod: 0.25, depth: 1700, pan: 0, amplitude: 0.25, delaytime: 0.5, feedback: 0.8;
+	espera = esperas[i] * 1.5;
+	wait espera;
+	i = i + 1;
+}
+
+
+indices = [30,34,0,37,4,41,8,38,12,34,29];
+esperas = [3.5,2,1,5,1,2.5,1,4,1,5,3];
+i = 0;
+
+repeat 11{
+	indice = indices[i];
+	nota = notas[indice] * 2;
+	simple_sequence instrument: 5, base: nota, interval: 0, wait: esperas[i], amount: 10,attack: 0, release: 1.5, mod: 0.25, depth: 1700, pan: 0, amplitude: 0.25, delaytime: 0.5, feedback: 0.8;
+	espera = esperas[i] * 1.5;
+	wait espera;
+	i = i + 1;
+}
+
+indices = [30,0,34,12,37,10,41,6,38,8,34,4,29,2];
+esperas = [3.5,0.5,2,1,5,0.5,2.5,0.25,4,1,5,0.5,3,1];
+i = 0;
+
+
+repeat 14{
+	indice = indices[i];
+	nota = notas[indice] * 2;
+	if nota < 600{
+		fm_in_parallel frequency: nota, amplitude: 0.2;
+	}
+	simple_sequence instrument: 5, base: nota, interval: 0, wait: esperas[i], amount: 10,attack: 0.25, release: 2, mod: 1.01, depth: 3400, pan: -1, amplitude: 0.25, delaytime: 0.125, feedback: 0.8;
+	nota = nota + 1;
+	simple_sequence instrument: 5, base: nota, interval: 0, wait: esperas[i], amount: 10,attack: 0.25, release: 2, mod: 1.02, depth: 3400, pan: 1, amplitude: 0.25, delaytime: 0.125, feedback: 0.8;
+	espera = esperas[i] * 1.5;
+	wait espera;
+	i = i + 1;
+}
+
+espera = espera * 2;
+
+wait espera;
+
+
+indices = [30,34,47,37,41,38,17,34,29];
+esperas = [1,1.5,2,0.5,1,1,2,0.5,1.5];
+
+repeat 3{
+	i = 0;
+
+	repeat 9{
+		indice = indices[i];
+		nota = notas[indice];
+		simple_sequence instrument: 2, base: nota, interval: 0, wait: esperas[i], amount: 7,attack: 0, release: 1.5, pan: 0, amplitude: 0.15, delaytime: 0.5, feedback: 0.8;
+		espera = esperas[i];
+		wait espera;
+		i = i + 1;
+	}
+}

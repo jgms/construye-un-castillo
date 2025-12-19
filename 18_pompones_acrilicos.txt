@@ -1,0 +1,124 @@
+# pompones, acrílicos
+
+notas=[150,157.5,167.5,175,187.5,195,210,217.5,225,232.5,240,255,262.5,275,282.5,292.5,300,315,335,350,375,390,420,435,450,465,480,510,525,550,565,585,600,630,670,700,750,780,840,870,900,930,960,1020,1050,1100,1130,1170,1200];# 49
+
+ostinato = [30,34,37,41,38,34,29];
+melodia = [28,1,26,40,2,22,3,8,17,1,14];
+
+pulse 70;
+
+k = 0;
+repeticiones = 6;
+repeat 3{
+	i = 0;
+	j = 0;
+	repeat 11{
+		indice = melodia[i];
+		nota = notas[indice] * 0.25;
+		basic_synth frequency: nota, attack: 0, sustain: 0.5, release: 2, cutoff: 2400, contour: 0.3, q: 18, pan: 0, amplitude: 0.33, delaytime: 1.5;
+		wait 0.125;
+
+		i = i + 1;
+		if i == 11{
+			i = 0;
+		}
+
+		repeat 3{
+			indice = 48 - k;
+			nota = notas[indice] * 2;
+			simple_wave frequency: nota, attack: 0.1, sustain: 0, release: 1, pan: -0.35, amplitude: 0.15, delaytime: 1;
+			wait 0.125;
+
+			k = k + 1;
+			if k == 49{
+				k = 0;
+			}
+		}
+
+		indice = ostinato[j];
+		nota = notas[indice] * 0.25;
+		basic_synth frequency: nota, attack: 0, sustain: 0.75, release: 2, cutoff: 1200, contour: 0.6, q: 18, pan: 0, amplitude: 0.28, delaytime: 0.5;
+		wait 0.125;
+
+		j = j + 1;
+		if j == 7{
+			j = 0;
+		}
+
+		repeat 5{
+			indice = k;
+			nota = notas[indice] * 2;
+			simple_wave frequency: nota, attack: 0.1, sustain: 0, release: 1, pan: 0.35, amplitude: 0.15, delaytime: 1;
+			wait 0.125;
+
+			k = k + 1;
+			if k == 49{
+				k = 0;
+			}
+		}
+	}
+
+	i = 0;
+	j = 0;
+	repeat repeticiones{
+		indice = melodia[i];
+		nota = notas[indice] * 2;
+		basic_synth frequency: nota, attack: 0, sustain: 0, release: 1, cutoff: 1200, contour: 0.6, q: 18, pan: -0.1, amplitude: 0.3, delaytime: 0.375;
+		wait 0.125;
+
+		i = i + 1;
+		if i == 11{
+			i = 0;
+		}
+
+		indice = ostinato[j];
+		nota = notas[indice] * 2;
+		basic_synth frequency: nota, attack: 0, sustain: 0, release: 2, cutoff: 1200, contour: 0.3, q: 10, pan: 0.1, amplitude: 0.3;
+		wait 0.125;
+
+		j = j + 1;
+		if j == 7{
+			j = 0;
+		}
+	}
+	wait 0.25;
+	repeticiones = repeticiones + 1;
+}
+
+wait 1.75;
+
+indice = melodia[i];
+nota = notas[indice] * 0.25;
+basic_synth frequency: nota, attack: 0, sustain: 3.3, release: 16, cutoff: 2400, contour: 0.6, q: 18, pan: -0.1, amplitude: 0.3, delaytime: 1.5;
+wait 0.25;
+indice = ostinato[j];
+nota = notas[indice] * 0.25;
+basic_synth frequency: nota, attack: 0, sustain: 3.2, release: 16, cutoff: 2400, contour: 0.6, q: 18, pan: 0.1, amplitude: 0.3, delaytime: 1.5;
+
+wait 3.75;
+
+i = 0;
+j = 0;
+repeat 3{
+	repeat 16{
+		indice = melodia[i];
+		nota = notas[indice];
+		basic_synth frequency: nota, attack: 0, sustain: 0, release: 1, cutoff: 1200, contour: 0.6, q: 18, pan: -0.15, amplitude: 0.25, delaytime: 0.375;
+		wait 0.25;
+
+		i = i + 1;
+		if i == 11{
+			i = 0;
+		}
+
+		indice = ostinato[j];
+		nota = notas[indice];
+		basic_synth frequency: nota, attack: 0, sustain: 0, release: 2, cutoff: 1200, contour: 0.3, q: 10, pan: 0.15, amplitude: 0.25;
+		wait 0.25;
+
+		j = j + 1;
+		if j == 7{
+			j = 0;
+		}
+	}
+}

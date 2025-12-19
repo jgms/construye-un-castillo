@@ -1,0 +1,112 @@
+# vespertino | vertical | piramidal
+
+notas=[150,157.5,167.5,175,187.5,195,210,217.5,225,232.5,240,255,262.5,275,282.5,292.5,300,315,335,350,375,390,420,435,450,465,480,510,525,550,565,585,600,630,670,700,750,780,840,870,900,930,960,1020,1050,1100,1130,1170];
+
+ostinato = [30,34,37,41,38,34,29];
+melodia = [28,1,26,40,2,22,3,8,17,1,14];
+esperas = [1,0.5,1,1,0.25,1,0.5,0.5,1,0.25,1];
+
+pulse 53;
+
+vuelta = 1;
+repeticiones = 2;
+repeat 2{
+	repeat 2{
+		i = 0;
+		j = 0;
+		repeat 11{
+			indice = melodia[i];
+			nota = notas[indice] * 2;
+			fm_in_parallel frequency: nota, attack: 0, sustain: 2.5, release: 2.5, modone: 0.5, depthone: 550, oneattack: 1.5, onesustain: 0, onerelease: 1.5, modtwo: 3.01, depthtwo: 200, twoattack: 0, twosustain: 0, tworelease: 4, pan: -0.7, amplitude: 0.22, delaytime: 0.2;
+			wait esperas[i];
+
+			repeat 3{
+				indice = ostinato[j];
+				nota = notas[indice] * 4;
+				simple_wave wave: 1, frequency: nota, attack: 0.05, release: 2, pan: 1, amplitude: 0.35, delaytime: 1;
+				wait 0.125;
+
+				j = j + 1;
+				if j == 7{
+					j = 0;
+				}
+			}
+			i = i + 1;	
+		}
+		nota = notas[29] * 2;
+		fm_in_parallel frequency: nota, attack: 0, sustain: 2.5, release: 2.5, modone: 0.5, depthone: 550, oneattack: 1.5, onesustain: 0, onerelease: 1.5, modtwo: 3.01, depthtwo: 200, twoattack: 0, twosustain: 0, tworelease: 4, pan: -0.7, amplitude: 0.3, delaytime: 0.2;
+		wait 1.5;
+	}
+
+	wait 2.5;
+
+	if vuelta == 2{
+		i = 0;
+		j = 0;
+		contador = 1;
+		repeat 3{
+			repeat 18{
+				indice = melodia[i];
+				nota = notas[indice] * 1;
+				fm_in_parallel frequency: nota, attack: 0, sustain: 2.5, release: 2.5, modone: 0.5, depthone: 1550, oneattack: 1.5, onesustain: 0, onerelease: 1.5, modtwo: 3.01, depthtwo: 500, twoattack: 0, twosustain: 0, tworelease: 4, pan: 1, amplitude: 0.2, delaytime: 0.2;
+				
+				espera = esperas[i] * 2;
+				wait espera;
+
+				i = i + 1;
+				if i == 11{
+					i = 0;
+				}
+
+				if contador == 3{
+					indice = melodia[i];
+					nota = notas[indice] * 4;
+					simple_wave wave: 1, frequency: nota, attack: 0.02, release: 2, pan: 0, amplitude: 0.55, delaytime: 1, feedback: 0.9;
+					wait 0.125;
+				}
+
+
+				indice = ostinato[j];
+				nota = notas[indice] * 1;
+				fm_in_parallel frequency: nota, attack: 0, sustain: 2.5, release: 2.5, modone: 0.5, depthone: 1550, oneattack: 1.5, onesustain: 0, onerelease: 1.5, modtwo: 3.01, depthtwo: 500, twoattack: 0, twosustain: 0, tworelease: 4, pan: -1, amplitude: 0.2, delaytime: 0.2;
+				wait 0.125;
+
+				j = j + 1;
+				if j == 7{
+					j = 0;
+				}
+			}
+			contador = contador + 1;
+		}
+		wait 6;
+	}
+
+
+	repeat repeticiones{
+		i = 0;
+		j = 0;
+		repeat 7{
+			indice = ostinato[i];
+			nota = notas[indice] * 2;
+			fm_in_parallel frequency: nota, attack: 0, sustain: 2.5, release: 2.5, modone: 0.5, depthone: 550, oneattack: 1.5, onesustain: 0, onerelease: 1.5, modtwo: 3.01, depthtwo: 200, twoattack: 0, twosustain: 0, tworelease: 4, pan: 0.7, amplitude: 0.23, delaytime: 0.2;
+			wait 1;
+
+			repeat 3{
+				indice = melodia[j];
+				nota = notas[indice] * 2;
+				simple_wave wave: 1, frequency: nota, attack: 0.05, release: 2, pan: -1, amplitude: 0.35, delaytime: 1;
+				wait 0.125;
+
+				j = j + 1;
+				if j == 11{
+					j = 0;
+				}
+			}
+			i = i + 1;	
+		}
+	}
+
+	wait 2.5;
+	vuelta = vuelta + 1;
+	repeticiones = repeticiones + 1;
+}

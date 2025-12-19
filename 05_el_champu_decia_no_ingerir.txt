@@ -1,0 +1,196 @@
+# el champú decía no ingerir
+
+escala=[150,157.5,167.5,175,187.5,195,210,217.5,225,232.5,240,255,262.5,275,282.5,292.5,300,315,335,350,375,390,420,435,450,465,480,510,525,550,565,585,600,630,670,700,750,780,840,870,900,930,960,1020,1050,1100,1130,1170,1200];
+octavas=[1,4,2,4,4,0.5,4,2,0.5,4,1,2,4,2];
+
+
+pulse 110;
+
+i = 0;
+j = 0;
+
+repeat 16{
+
+	k = i;
+
+	repeat 4{
+
+		nota = escala[k] * octavas[j];
+
+		if octavas[j] == 4{
+			wait 1;
+		}else{
+			repeat 3{
+				basic_fm frequency: nota, attack: 0, sustain: 0.1, release: 2, mod: 0.25, depth: 100, pan: -0.1, amplitude: 0.3, delaytime: 1;
+				wait 0.125;
+			}
+		}
+
+
+
+
+		k = k + 6;
+
+		j = j + 1;
+		if j == 14{
+			j = 0;
+		}
+
+	}
+
+
+	i = i + 1;
+}
+
+wait 4;
+
+nota = escala[28];
+fm_in_parallel frequency: nota, attack: 0.15, sustain: 1.5, release: 1, amplitude: 0.35, modone: 1.72, depthone: 7919, oneattack: 3.5, onesustain: 0, onerelease: 4.5, modtwo: 0.34, depthtwo: 8802, twoattack: 0, twosustain: 0, tworelease: 3.5, pan: 0, delaytime: 1, feedback: 0.7;
+
+nota = escala[1] * 0.5;
+fm_in_parallel frequency: nota, attack: 4.5, sustain: 2.5, release: 2.5, amplitude: 0.35, modone: 0.25, depthone: 2207, oneattack: 0, onesustain: 2.5, onerelease: 1.5, modtwo: 0.25, depthtwo: 1507, twoattack: 0, twosustain: 0, tworelease: 2.5, pan: -1;
+
+wait 8;
+
+nota = escala[26];
+fm_in_parallel frequency: nota, attack: 0.15, sustain: 4.5, release: 2.5, amplitude: 0.25, modone: 0.52, depthone: 9939, oneattack: 0, onesustain: 0, onerelease: 2, modtwo: 1.18, depthtwo: 3370, twoattack: 0, twosustain: 5, tworelease: 4, pan: 1, delaytime: 1, feedback: 0.7;
+
+nota = escala[40];
+fm_in_parallel frequency: nota, attack: 0.15, sustain: 4.5, release: 4, amplitude: 0.3, modone: 3.84, depthone: 4673, oneattack: 0, onesustain: 0, onerelease: 3.5, modtwo: 3.54, depthtwo: 4160, twoattack: 1.5, twosustain: 0, tworelease: 4.5, pan: 0, delaytime: 0.5, feedback: 0.9;
+wait 4;
+
+nota = escala[12];
+fm_in_parallel frequency: nota, attack: 3.5, sustain: 3, release: 3.5, amplitude: 0.3, modone: 1.54, depthone: 6613, oneattack: 0, onesustain: 0, onerelease: 5, modtwo: 3.40, depthtwo: 8822, twoattack: 0, twosustain: 3, tworelease: 3, pan: -1, delaytime: 1, feedback: 0.9;
+
+pulse 55;
+
+nota = escala[22];
+fm_in_parallel frequency: 420, attack: 1, sustain: 3, release: 1, amplitude: 0.3, modone: 0.5, depthone: 2229, oneattack: 0, onesustain: 3, onerelease: 1.5, modtwo: 3, depthtwo: 2457, twoattack: 0, twosustain: 1.5, tworelease: 3, pan: 0;
+
+wait 4;
+
+nota = escala[3] * 0.5;
+fm_in_parallel frequency: nota, attack: 0.15, sustain: 1, release: 1.5, amplitude: 0.35, modone: 5, depthone: 6981, oneattack: 0, onesustain: 2.5, onerelease: 2.5, modtwo: 3, depthtwo: 6675, twoattack: 0, twosustain: 3, tworelease: 2.5, pan: 0, delaytime: 2, feedback: 0.9;
+
+pulse 110;
+
+indices=[8,17,11,14];
+pans = [-0.4,0.5,0.3,0];
+i = 0;
+repeat 4{
+	indice = indices[i];
+	nota = escala[indice];
+	fm_in_parallel frequency: nota, attack: 3, sustain: 5, release: 4.5, amplitude: 0.15, modone: 0.125, depthone: 1391, oneattack: 0, onesustain: 0, onerelease: 2.5, modtwo: 0.25, depthtwo: 2867, twoattack: 3.5, twosustain: 2.5, tworelease: 3, pan: pans[i];
+	wait 2;
+	i = i + 1;
+}
+
+wait 8;
+
+
+pans=[-0.1,0.6];
+i = 0;
+repeat 2{
+	pulse 110;
+	repeat 3{
+		nota = escala[17];
+		fm_in_parallel frequency: nota, attack: 0.15, sustain: 2.5, release: 5, amplitude: 0.3, modone: 2.21, depthone: 1567, oneattack: 1.5, onesustain: 0, onerelease: 3, modtwo: 0.21, depthtwo: 2189, twoattack: 2.5, twosustain: 0, tworelease: 2.5, pan: 0.6;
+		wait 3;
+
+		nota = escala[24];
+		fm_in_parallel frequency: nota, attack: 2, sustain: 4, release: 2.5, amplitude: 0.2, modone: 0.5, depthone: 725, oneattack: 0, onesustain: 0, onerelease: 3.5, modtwo: 0.25, depthtwo: 9358, twoattack: 0, twosustain: 1, tworelease: 5, pan: -0.6;
+		wait 1;
+	}
+
+	pulse 27.5;
+
+	nota = escala[12];
+	fm_in_parallel frequency: nota, attack: 2.5, sustain: 4, release: 4, amplitude: 0.35, modone: 2.66, depthone: 6362, oneattack: 0, onesustain: 0, onerelease: 1.5, modtwo: 3.45, depthtwo: 4448, twoattack: 2, twosustain: 2.5, tworelease: 4, pan: pans[i];
+	wait 1.5;
+	i = i + 1;
+}
+
+pulse 55;
+
+wait 5;
+
+nota = escala[12];
+fm_in_parallel frequency: nota, attack: 0.15, sustain: 2, release: 4.5, amplitude: 0.35, modone: 2.38, depthone: 8842, oneattack: 0, onesustain: 0, onerelease: 3.5, modtwo: 3.96, depthtwo: 5117, twoattack: 0, twosustain: 0, tworelease: 4, pan: -0.7, delaytime: 0.25, feedback: 0.9;
+wait 1.5;
+
+
+repeat 2{
+	nota = escala[42];
+	fm_in_parallel frequency: nota, attack: 0.15, sustain: 2.5, release: 1.5, amplitude: 0.25, modone: 0.125, depthone: 8992, oneattack: 4.5, onesustain: 0, onerelease: 3, modtwo: 0.125, depthtwo: 2863, twoattack: 0, twosustain: 0, tworelease: 2, pan: 0.3, delaytime: 0.25, feedback: 0.9;
+	wait 2.5;
+
+	nota = escala[9];
+	fm_in_parallel frequency: nota, attack: 4, sustain: 5, release: 5, amplitude: 0.35, modone: 0.25, depthone: 9289, oneattack: 3, onesustain: 0, onerelease: 4, modtwo: 5, depthtwo: 4791, twoattack: 1.5, twosustain: 0, tworelease: 5, pan: -1, delaytime: 1.5, feedback: 0.8;
+	wait 1;
+
+	nota = escala[6];
+	fm_in_parallel frequency: nota, attack: 2.5, sustain: 4.5, release: 5, amplitude: 0.25, modone: 1.83, depthone: 2613, oneattack: 5, onesustain: 0, onerelease: 2, modtwo: 2.36, depthtwo: 6366, twoattack: 4, twosustain: 0, tworelease: 2, pan: 0.8;
+
+	wait 5;
+}
+
+nota = escala[14];
+fm_in_parallel frequency: nota, attack: 2.5, sustain: 4, release: 4, amplitude: 0.8, modone: 0.5, depthone: 1399, oneattack: 5, onesustain: 2, onerelease: 1, modtwo: 2, depthtwo: 189, twoattack: 4, twosustain: 1.5, tworelease: 2.5, pan: 0;
+
+wait 10;
+
+pulse 110;
+
+pans=[0.9,0.3,0.6,-0.4,0.5,-1,0,-0.5,0.3,0.6,-0.4,0.5,-1,0];
+
+vuelta = 1;
+repeat 4{
+	i = 0;
+	j = 0;
+
+	repeat 16{
+
+		k = i;
+
+		repeat 4{
+
+			nota = escala[k] * octavas[j];
+
+			if octavas[j] == 4{
+				if vuelta > 1{
+					if vuelta < 4{
+						basic_fm frequency: nota, attack: 1, sustain: 0.75, release: 0.25, mod: 3.001, depth: 1300, pan: 0.2, amplitude: 0.3, delaytime: 1.25;
+					}
+				}
+				repeat 3{
+					if vuelta == 3{
+						simple_wave_ring wave: 2, frequency: nota, attack: 0, release: 4, modfreq: 1200, modwave: 0, pan: pans[j], amplitude: 0.15, delaytime: 0.75;
+					}
+					wait 0.25;
+					nota = nota * 0.5;
+				}
+				wait 0.25;
+			}else{
+				repeat 3{
+					basic_fm frequency: nota, attack: 0, sustain: 0.1, release: 2, mod: 0.25, depth: 100, pan: -0.1, amplitude: 0.3, delaytime: 1;
+					wait 0.125;
+				}
+			}
+
+
+
+
+			k = k + 6;
+
+			j = j + 1;
+			if j == 14{
+				j = 0;
+			}
+
+		}
+
+
+		i = i + 1;
+	}
+	vuelta = vuelta + 1;
+}

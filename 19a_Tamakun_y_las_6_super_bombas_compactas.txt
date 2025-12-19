@@ -1,0 +1,77 @@
+# Tamakún y las 6 súper bombas compactas (a)
+
+notas=[150,157.5,167.5,175,187.5,195,210,217.5,225,232.5,240,255,262.5,275,282.5,292.5,300,315,335,350,375,390,420,435,450,465,480,510,525,550,565,585,600,630,670,700,750,780,840,870,900,930,960,1020,1050,1100,1130,1170];
+
+pulse 48;
+
+indices = [30,34,37,41,38,34,29];
+esperas = [3.5,2,5,2.5,4,5,3];
+i = 0;
+
+repeat 7{
+	indice = indices[i];
+	nota = notas[indice] * 4;
+	simple_sequence instrument: 5, base: nota, interval: 0, wait: esperas[i], amount: 13,attack: 0.75, release: 2, mod: 0.06252, depth: 700, pan: -0.7, amplitude: 0.21, delaytime: 0.2, feedback: 0.8;
+	espera = esperas[i] * 1.5;
+	wait espera;
+	i = i + 1;
+}
+
+wait espera;
+
+repeat 3{
+	basic_synth frequency: notas[14], cutoff: 1400, q: 1, contour: 0.15, attack: 0.1, sustain: 1, release: 1.5, pan: -0.2, amplitude: 0.2;
+	wait 0.5;
+	basic_synth frequency: notas[2], cutoff: 1400, q: 1, contour: 0.45, attack: 1, sustain: 1, release: 2, pan: 0, amplitude: 0.1;#bass
+	basic_synth frequency: notas[18], cutoff: 1400, q: 1, contour: 0.15, attack: 0.1, sustain: 1, release: 1.5, pan: -0.2, amplitude: 0.2;
+	wait 0.75;
+	basic_synth frequency: notas[46], cutoff: 2400, q: 20, contour: 0.15, attack: 0.5, sustain: 0, release: 6, pan: 1, amplitude: 0.15; #melodía
+	basic_synth frequency: notas[38], cutoff: 2400, q: 20, contour: 0.15, attack: 1, sustain: 0, release: 6, pan: 0.6, amplitude: 0.15; #melodía
+	wait 0.25;
+	basic_synth frequency: notas[21], cutoff: 1400, q: 1, contour: 0.15, attack: 0.1, sustain: 1, release: 1.5, pan: -0.2, amplitude: 0.2;
+	wait 0.5;
+
+	basic_synth frequency: notas[25], cutoff: 1400, q: 1, contour: 0.15, attack: 0.1, sustain: 1, release: 1.5, pan: -0.2, amplitude: 0.2;
+	basic_synth frequency: notas[9], cutoff: 1400, q: 1, contour: 0.45, attack: 1, sustain: 1, release: 2, pan: 0, amplitude: 0.1;#bass
+	wait 0.75;
+	basic_synth frequency: notas[34], cutoff: 2400, q: 20, contour: 0.15, attack: 0.1, sustain: 0, release: 6, pan: 1, amplitude: 0.15; #melodía
+	wait 0.75;
+	basic_synth frequency: notas[43], cutoff: 2400, q: 20, contour: 0.15, attack: 0.5, sustain: 0, release: 6, pan: 1, amplitude: 0.15; #melodía
+	basic_synth frequency: notas[36], cutoff: 2400, q: 20, contour: 0.15, attack: 1, sustain: 0, release: 6, pan: 0.5, amplitude: 0.15; #melodía
+	wait 0.25;
+	basic_synth frequency: notas[22], cutoff: 1400, q: 1, contour: 0.15, attack: 0.1, sustain: 1, release: 1.5, pan: -0.2, amplitude: 0.2;
+	basic_synth frequency: notas[6], cutoff: 1400, q: 1, contour: 0.45, attack: 1, sustain: 1, release: 2, pan: 0, amplitude: 0.1;#bass
+	wait 0.75;
+	basic_synth frequency: notas[39], cutoff: 2400, q: 20, contour: 0.15, attack: 0.5, sustain: 0, release: 6, pan: 1, amplitude: 0.15; #melodía
+	basic_synth frequency: notas[33], cutoff: 2400, q: 20, contour: 0.15, attack: 1, sustain: 0, release: 6, pan: 0.4, amplitude: 0.15; #melodía
+	wait 0.5;
+	basic_synth frequency: notas[18], cutoff: 1400, q: 1, contour: 0.15, attack: 0.1, sustain: 1, release: 1.5, pan: -0.2, amplitude: 0.2;
+	wait 0.5;
+
+	basic_synth frequency: notas[29], cutoff: 1400, q: 1, contour: 0.15, attack: 0.1, sustain: 1, release: 1.5, pan: -0.2, amplitude: 0.2;
+	basic_synth frequency: notas[13], cutoff: 1400, q: 1, contour: 0.45, attack: 1, sustain: 1, release: 2, pan: 0, amplitude: 0.1;#bass
+	wait 0.75;
+	basic_synth frequency: notas[26], cutoff: 1400, q: 1, contour: 0.15, attack: 0.1, sustain: 1, release: 1.5, pan: -0.2, amplitude: 0.2;
+	wait 0.75;
+	basic_synth frequency: notas[46], cutoff: 2400, q: 20, contour: 0.15, attack: 0.1, sustain: 0, release: 6, pan: 1, amplitude: 0.15; #melodía
+	wait 1;
+	basic_synth frequency: notas[34], cutoff: 2400, q: 20, contour: 0.15, attack: 0.5, sustain: 0, release: 6, pan: 1, amplitude: 0.15; #melodía
+	basic_synth frequency: notas[29], cutoff: 2400, q: 20, contour: 0.15, attack: 1, sustain: 0, release: 6, pan: 0.3, amplitude: 0.15; #melodía
+	wait 0.75;
+	basic_synth frequency: notas[22], cutoff: 1400, q: 1, contour: 0.15, attack: 0.1, sustain: 1, release: 1.5, pan: -0.2, amplitude: 0.2;
+	basic_synth frequency: notas[6], cutoff: 3600, q: 1, contour: 0.45, attack: 0.5, sustain: 1, release: 2, pan: 0, amplitude: 0.1;#bass
+	wait 0.5;
+
+	basic_synth frequency: notas[18], cutoff: 1400, q: 1, contour: 0.15, attack: 0.1, sustain: 1, release: 1.5, pan: -0.2, amplitude: 0.2;
+	basic_synth frequency: notas[2], cutoff: 3600, q: 1, contour: 0.45, attack: 0.5, sustain: 1, release: 2, pan: 0, amplitude: 0.1;#bass
+	wait 3;
+}
+
+wait 1;
+
+basic_synth frequency: notas[22], cutoff: 1400, q: 1, contour: 0.15, attack: 0.1, sustain: 1, release: 1.5, pan: -0.2, amplitude: 0.2;
+basic_synth frequency: notas[6], cutoff: 3600, q: 1, contour: 0.45, attack: 0.5, sustain: 1, release: 2, pan: 0, amplitude: 0.1;#bass
+wait 0.5;
+
+basic_synth frequency: notas[18], cutoff: 1400, q: 1, contour: 0.15, attack: 0.1, sustain: 1, release: 1.5, pan: -0.2, amplitude: 0.2;
+basic_synth frequency: notas[2], cutoff: 3600, q: 1, contour: 0.45, attack: 0.5, sustain: 1, release: 2, pan: 0, amplitude: 0.1;#bass

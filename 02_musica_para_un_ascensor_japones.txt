@@ -1,0 +1,635 @@
+# música para un ascensor japonés
+
+notas=[300,315,335,350,375,390,420,435,450,465,480,510,525,550,565,585];
+
+melodia=[3,12,10,8,4,-1,0,12,-1,1,1,-1,-1,-1,8];
+
+# acordes
+a=[12,-1,-1,-1,-1,-1,-1,-1,3,-1,-1,-1,-1,-1,-1,-1,15,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,1,-1,-1,-1,-1,-1,-1,-1,8,-1,-1,-1,-1,-1,-1,-1,10,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,3,-1,-1,-1,-1,-1,-1,-1,9,-1,-1,-1,-1,-1,-1,-1,8,-1,-1,-1,-1,-1,-1,-1,12,-1,-1,-1,-1,-1,-1,-1,12,-1,-1,-1,-1,-1,-1,-1,3,-1,-1,-1,-1,-1,-1,-1,12,-1,-1,-1,-1,-1,-1,-1,4,-1,-1,-1,-1,-1,-1,-1];
+b=[10,-1,-1,-1,-1,-1,-1,-1,1,-1,-1,-1,-1,-1,-1,-1,1,-1,-1,-1,-1,-1,-1,-1,8,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,2,-1,-1,-1,-1,-1,-1,-1,8,-1,-1,-1,-1,-1,-1,-1,6,-1,-1,-1,-1,-1,-1,-1,8,-1,-1,-1,-1,-1,-1,-1,5,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,3,-1,-1,-1,-1,-1,-1,-1,12,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,11,-1,-1,-1,-1,-1,-1,-1];
+c=[8,-1,-1,-1,-1,-1,-1,-1,8,-1,-1,-1,-1,-1,-1,-1,3,-1,-1,-1,-1,-1,-1,-1,4,-1,-1,-1,-1,-1,-1,-1,3,-1,-1,-1,-1,-1,-1,-1,9,-1,-1,-1,-1,-1,-1,-1,3,-1,-1,-1,-1,-1,-1,-1,3,-1,-1,-1,-1,-1,-1,-1,12,-1,-1,-1,-1,-1,-1,-1,4,-1,-1,-1,-1,-1,-1,-1,4,-1,-1,-1,-1,-1,-1,-1,3,-1,-1,-1,-1,-1,-1,-1,13,-1,-1,-1,-1,-1,-1,-1,10,-1,-1,-1,-1,-1,-1,-1,8,-1,-1,-1,-1,-1,-1,-1,12,-1,-1,-1,-1,-1,-1,-1];
+
+
+pulse 88;
+
+j = 0; # para "cuerdas"
+
+# uno
+
+repeat 4{
+	i = 0;
+	depth = 2000;
+	mod = 0.125;
+	repeat 16{
+		nota = notas[i];
+		
+		if i == 0{
+			basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+			depth = depth * 0.6;
+			mod = mod * 1.0001;
+		}else{
+			if i == 4{
+				basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+				depth = depth * 0.6;
+				mod = mod * 1.0001;
+			}else{
+				if i == 8{
+					basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+					depth = depth * 0.6;
+					mod = mod * 1.0001;
+				}else{
+					if i == 10{
+						basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+					}
+				}
+			}
+		}
+		wait 0.25;
+		i = i + 1;
+
+		if a[j] >= 0{
+			indice = a[j];
+			nota = notas[indice] * 2;
+			basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0, amplitude: 0.25, delaytime: 3, feedback: 0.2;
+			wait 0.5;
+			indice = b[j];
+			nota = notas[indice] * 2;
+			basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0.1, amplitude: 0.2, delaytime: 3, feedback: 0.2;
+			wait 0.5;
+			indice = c[j];
+			nota = notas[indice] * 2;
+			basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0.2, amplitude: 0.2, delaytime: 3, feedback: 0.2;
+			wait 0.5;
+		}
+
+		j = j + 1;
+
+		if j == 128 {
+			j = 0;
+		}
+	}
+}
+
+# dos
+
+repeat 2{
+	i = 0;
+	depth = 2000;
+	mod = 0.25;
+	repeat 16{
+		nota = notas[i];
+		
+		if i == 1{
+			basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+			depth = depth * 0.6;
+			mod = mod * 1.0001;
+		}else{
+			if i == 6{
+				basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+				depth = depth * 0.6;
+				mod = mod * 1.0001;
+			}else{
+				if i == 12{
+					basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+					depth = depth * 0.6;
+					mod = mod * 1.0001;
+				}
+			}
+		}
+		wait 0.125;
+		i = i + 1;
+	}
+}
+
+# tres
+
+i = 0;
+depth = 2000;
+mod = 0.125;
+repeat 16{
+	nota = notas[i];
+	
+	if i == 3{
+		basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+		depth = depth * 0.6;
+		mod = mod * 1.0001;
+	}else{
+		if i == 6{
+			basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+			depth = depth * 0.6;
+			mod = mod * 1.0001;
+		}else{
+			if i == 12{
+				basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+				depth = depth * 0.6;
+				mod = mod * 1.0001;
+			}
+		}
+	}
+	wait 0.25;
+	i = i + 1;
+
+	if a[j] >= 0{
+		indice = a[j];
+		nota = notas[indice] * 2;
+		basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0, amplitude: 0.25, delaytime: 3, feedback: 0.2;
+		wait 0.5;
+		indice = b[j];
+		nota = notas[indice] * 2;
+		basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0.1, amplitude: 0.2, delaytime: 3, feedback: 0.2;
+		wait 0.5;
+		indice = c[j];
+		nota = notas[indice] * 2;
+		basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0.2, amplitude: 0.2, delaytime: 3, feedback: 0.2;
+		wait 0.5;
+	}
+
+	j = j + 1;
+
+	if j == 128 {
+		j = 0;
+	}
+}
+
+# cuatro
+
+i = 0;
+depth = 2000;
+mod = 0.125;
+repeat 16{
+	nota = notas[i];
+	
+	if i == 0{
+		basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+		depth = depth * 0.6;
+		mod = mod * 1.0001;
+	}else{
+		if i == 4{
+			basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+			depth = depth * 0.6;
+			mod = mod * 1.0001;
+		}else{
+			if i == 8{
+				basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+				depth = depth * 0.6;
+				mod = mod * 1.0001;
+			}
+		}
+	}
+
+	# percusión
+	if i == 0{
+		simple_sequence instrument: 5, base: 90, amount: 2, interval: 0, wait: 0.25, attack: 0, release: 0.5, mod: 0.5, depth: 2000, pan: 0, amplitude: 0.6, delaytime: 0.75, feedback: 0.9;
+	}
+
+	if i == 6{
+		white_noise attack: 0, sustain: 0.05, release: 0.5, pan: 0, amplitude: 0.4, delaytime: 2, feedback: 0.8;
+		fm_in_parallel frequency: 150, attack: 0, sustain: 0.1, release: 0.5, modone: 0.7, depthone: 25000, oneattack: 0, onesustain: 0, onerelease: 0.2, modtwo: 1.86, depthtwo: 13000, twoattack: 0.2, twosustain: 0, tworelease: 0.6, pan: 0, amplitude: 0.2, delaytime: 0.125, feedback: 0.9;
+	}	
+
+	if i == 10{
+		simple_sequence instrument: 5, base: 90, amount: 4, interval: 0, wait: 0.125, attack: 0, release: 0.3, mod: 6, depth: 4000, pan: -0.9, amplitude: 0.5;
+	}
+
+	if i == 14{
+		simple_sequence instrument: 5, base: 900, amount: 2, interval: 0, wait: 0.125, attack: 0, release: 0.3, mod: 6, depth: 4000, pan: 0.9, amplitude: 0.6, delaytime: 1.25, feedback: 0.9;
+	}
+
+	wait 0.25;
+	i = i + 1;
+
+	if a[j] >= 0{
+		indice = a[j];
+		nota = notas[indice] * 2;
+		basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0, amplitude: 0.25, delaytime: 3, feedback: 0.2;
+		wait 0.5;
+		indice = b[j];
+		nota = notas[indice] * 2;
+		basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0.1, amplitude: 0.2, delaytime: 3, feedback: 0.2;
+		wait 0.5;
+		indice = c[j];
+		nota = notas[indice] * 2;
+		basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0.2, amplitude: 0.2, delaytime: 3, feedback: 0.2;
+		wait 0.5;
+	}
+
+	j = j + 1;
+
+	if j == 128 {
+		j = 0;
+	}
+}
+
+repeat 2{
+	k = 0;
+	repeat 15{
+		
+		if melodia[k] >= 0{
+			indice = melodia[k];
+			nota = notas[indice] * 2;
+			simple_wave wave: 2, frequency: nota, attack: 0.01, release: 5, pan: 0, amplitude: 0.14, delaytime: 0.375, feedback: 0.8;
+		}
+
+		k = k + 1;
+
+		wait 0.25;
+	}
+}
+
+# cinco
+
+repeat 2{
+	i = 0;
+	depth = 2000;
+	mod = 0.25;
+	repeat 16{
+		nota = notas[i];
+		
+		if i == 5{
+			basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+			depth = depth * 0.6;
+			mod = mod * 1.0001;
+		}else{
+			if i == 15{
+				basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+				depth = depth * 0.6;
+				mod = mod * 1.0001;
+			}
+		}
+		wait 0.125;
+		i = i + 1;
+	}
+}
+
+wait 2;
+
+# seis
+
+i = 0;
+depth = 2000;
+mod = 0.25;
+repeat 16{
+	nota = notas[i];
+	
+	if i == 1{
+		basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+		depth = depth * 0.6;
+		mod = mod * 1.0001;
+	}else{
+		if i == 3{
+			basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+			depth = depth * 0.6;
+			mod = mod * 1.0001;
+		}else{
+			if i == 6{
+				basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+				depth = depth * 0.6;
+				mod = mod * 1.0001;
+			}else{
+				if i == 12{
+					basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+				}
+			}
+		}
+	}
+
+	# percusión
+	if i == 0{
+		simple_sequence instrument: 5, base: 90, amount: 2, interval: 0, wait: 0.25, attack: 0, release: 0.5, mod: 0.5, depth: 2000, pan: 0, amplitude: 0.6, delaytime: 0.75, feedback: 0.9;
+	}
+
+	if i == 6{
+		white_noise attack: 0, sustain: 0.05, release: 0.5, pan: 0, amplitude: 0.4, delaytime: 2, feedback: 0.8;
+		fm_in_parallel frequency: 150, attack: 0, sustain: 0.1, release: 0.5, modone: 0.7, depthone: 25000, oneattack: 0, onesustain: 0, onerelease: 0.2, modtwo: 1.86, depthtwo: 13000, twoattack: 0.2, twosustain: 0, tworelease: 0.6, pan: 0, amplitude: 0.2, delaytime: 0.125, feedback: 0.9;
+	}	
+
+	if i == 10{
+		simple_sequence instrument: 5, base: 90, amount: 4, interval: 0, wait: 0.125, attack: 0, release: 0.3, mod: 6, depth: 4000, pan: -0.9, amplitude: 0.5;
+	}
+
+	if i == 14{
+		simple_sequence instrument: 5, base: 900, amount: 2, interval: 0, wait: 0.125, attack: 0, release: 0.3, mod: 6, depth: 4000, pan: 0.9, amplitude: 0.6, delaytime: 1.25, feedback: 0.9;
+	}
+
+	wait 0.25;
+	i = i + 1;
+
+	if a[j] >= 0{
+		indice = a[j];
+		nota = notas[indice] * 2;
+		basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0, amplitude: 0.25, delaytime: 3, feedback: 0.2;
+		wait 0.5;
+		indice = b[j];
+		nota = notas[indice] * 2;
+		basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0.1, amplitude: 0.2, delaytime: 3, feedback: 0.2;
+		wait 0.5;
+		indice = c[j];
+		nota = notas[indice] * 2;
+		basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0.2, amplitude: 0.2, delaytime: 3, feedback: 0.2;
+		wait 0.5;
+	}
+
+	j = j + 1;
+
+	if j == 128 {
+		j = 0;
+	}
+}
+
+# siete
+
+i = 0;
+depth = 2000;
+mod = 0.25;
+repeat 16{
+	nota = notas[i];
+	
+	if i == 0{
+		basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+		depth = depth * 0.6;
+		mod = mod * 1.0001;
+	}else{
+		if i == 4{
+			basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+			depth = depth * 0.6;
+			mod = mod * 1.0001;
+		}else{
+			if i == 8{
+				basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+				depth = depth * 0.6;
+				mod = mod * 1.0001;
+			}
+		}
+	}
+
+	# percusión
+	if i == 0{
+		simple_sequence instrument: 5, base: 90, amount: 2, interval: 0, wait: 0.25, attack: 0, release: 0.5, mod: 0.5, depth: 2000, pan: 0, amplitude: 0.6, delaytime: 0.75, feedback: 0.9;
+	}
+
+	if i == 6{
+		white_noise attack: 0, sustain: 0.05, release: 0.5, pan: 0, amplitude: 0.4, delaytime: 2, feedback: 0.8;
+		fm_in_parallel frequency: 150, attack: 0, sustain: 0.1, release: 0.5, modone: 0.7, depthone: 25000, oneattack: 0, onesustain: 0, onerelease: 0.2, modtwo: 1.86, depthtwo: 13000, twoattack: 0.2, twosustain: 0, tworelease: 0.6, pan: 0, amplitude: 0.2, delaytime: 0.125, feedback: 0.9;
+	}	
+
+	if i == 10{
+		simple_sequence instrument: 5, base: 90, amount: 4, interval: 0, wait: 0.125, attack: 0, release: 0.3, mod: 6, depth: 4000, pan: -0.9, amplitude: 0.5;
+	}
+
+	if i == 14{
+		simple_sequence instrument: 5, base: 900, amount: 2, interval: 0, wait: 0.125, attack: 0, release: 0.3, mod: 6, depth: 4000, pan: 0.9, amplitude: 0.6, delaytime: 1.25, feedback: 0.9;
+	}
+
+	wait 0.25;
+	i = i + 1;
+
+	if a[j] >= 0{
+		indice = a[j];
+		nota = notas[indice] * 2;
+		basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0, amplitude: 0.25, delaytime: 3, feedback: 0.2;
+		wait 0.5;
+		indice = b[j];
+		nota = notas[indice] * 2;
+		basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0.1, amplitude: 0.2, delaytime: 3, feedback: 0.2;
+		wait 0.5;
+		indice = c[j];
+		nota = notas[indice] * 2;
+		basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0.2, amplitude: 0.2, delaytime: 3, feedback: 0.2;
+		wait 0.5;
+	}
+
+	j = j + 1;
+
+	if j == 128 {
+		j = 0;
+	}
+}
+
+repeat 2{
+	k = 0;
+	repeat 15{
+		
+		if melodia[k] >= 0{
+			indice = melodia[k];
+			nota = notas[indice] * 2;
+			simple_wave wave: 2, frequency: nota, attack: 0.01, release: 5, pan: 0, amplitude: 0.14, delaytime: 0.375, feedback: 0.8;
+		}
+
+		k = k + 1;
+
+		wait 0.25;
+	}
+}
+
+wait 2;
+
+# ocho
+
+repeat 2{
+	i = 0;
+	depth = 2000;
+	mod = 0.25;
+	repeat 16{
+		nota = notas[i];
+		
+		if i == 0{
+			basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+			depth = depth * 0.6;
+			mod = mod * 1.0001;
+		}else{
+			if i == 10{
+				basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+				depth = depth * 0.6;
+				mod = mod * 1.0001;
+			}
+		}
+		wait 0.125;
+		i = i + 1;
+	}
+}
+
+wait 2;
+
+# nueve
+
+vuelta = 1;
+repeat 4{
+	i = 0;
+	depth = 2000;
+
+	if vuelta == 4{
+		mod = 0.25;
+	}else{
+		mod = 0.125;
+	}
+	
+	repeat 16{
+		nota = notas[i];
+		
+		if i == 1{
+			basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+			depth = depth * 0.6;
+			mod = mod * 1.0001;
+		}else{
+			if i == 3{
+				basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+				depth = depth * 0.6;
+				mod = mod * 1.0001;
+			}else{
+				if i == 6{
+					basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+					depth = depth * 0.6;
+					mod = mod * 1.0001;
+				}else{
+					if i == 12{
+						basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+					}
+				}
+			}
+		}
+
+		# percusión
+		if i == 0{
+			simple_sequence instrument: 5, base: 90, amount: 2, interval: 0, wait: 0.25, attack: 0, release: 0.5, mod: 0.5, depth: 2000, pan: 0, amplitude: 0.6, delaytime: 0.75, feedback: 0.9;
+		}
+
+		if i == 6{
+			white_noise attack: 0, sustain: 0.05, release: 0.5, pan: 0, amplitude: 0.4, delaytime: 2, feedback: 0.8;
+			fm_in_parallel frequency: 150, attack: 0, sustain: 0.1, release: 0.5, modone: 0.7, depthone: 25000, oneattack: 0, onesustain: 0, onerelease: 0.2, modtwo: 1.86, depthtwo: 13000, twoattack: 0.2, twosustain: 0, tworelease: 0.6, pan: 0, amplitude: 0.2, delaytime: 0.125, feedback: 0.9;
+		}	
+
+		if i == 10{
+			simple_sequence instrument: 5, base: 90, amount: 4, interval: 0, wait: 0.125, attack: 0, release: 0.3, mod: 6, depth: 4000, pan: -0.9, amplitude: 0.5;
+		}
+
+		if i == 14{
+			simple_sequence instrument: 5, base: 900, amount: 2, interval: 0, wait: 0.125, attack: 0, release: 0.3, mod: 6, depth: 4000, pan: 0.9, amplitude: 0.6, delaytime: 1.25, feedback: 0.9;
+		}
+
+		wait 0.25;
+		i = i + 1;
+
+		if a[j] >= 0{
+			indice = a[j];
+			nota = notas[indice] * 2;
+			basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0, amplitude: 0.25, delaytime: 3, feedback: 0.2;
+			wait 0.5;
+			indice = b[j];
+			nota = notas[indice] * 2;
+			basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0.1, amplitude: 0.2, delaytime: 3, feedback: 0.2;
+			wait 0.5;
+			indice = c[j];
+			nota = notas[indice] * 2;
+			basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0.2, amplitude: 0.2, delaytime: 3, feedback: 0.2;
+			wait 0.5;
+		}
+
+		j = j + 1;
+
+		if j == 128 {
+			j = 0;
+		}
+	}
+
+	# diez
+
+	i = 0;
+	depth = 2000;
+
+	if vuelta == 4{
+		mod = 0.25;
+	}else{
+		mod = 0.125;
+	}
+
+	repeat 16{
+		nota = notas[i];
+		
+		if i == 5{
+			basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+			depth = depth * 0.6;
+			mod = mod * 1.0001;
+		}else{
+			if i == 15{
+				basic_fm frequency: nota, attack: 0, sustain: 0, release: 8, mod: mod, depth: depth, pan: -0.4, amplitude: 0.25, delaytime: 2;
+				depth = depth * 0.6;
+				mod = mod * 1.0001;
+			}
+		}
+
+		# percusión
+		if i == 0{
+			simple_sequence instrument: 5, base: 90, amount: 2, interval: 0, wait: 0.25, attack: 0, release: 0.5, mod: 0.5, depth: 2000, pan: 0, amplitude: 0.6, delaytime: 0.75, feedback: 0.9;
+		}
+
+		if i == 6{
+			white_noise attack: 0, sustain: 0.05, release: 0.5, pan: 0, amplitude: 0.4, delaytime: 2, feedback: 0.8;
+			fm_in_parallel frequency: 150, attack: 0, sustain: 0.1, release: 0.5, modone: 0.7, depthone: 25000, oneattack: 0, onesustain: 0, onerelease: 0.2, modtwo: 1.86, depthtwo: 13000, twoattack: 0.2, twosustain: 0, tworelease: 0.6, pan: 0, amplitude: 0.2, delaytime: 0.125, feedback: 0.9;
+		}
+
+		if vuelta > 2{
+			if i == 8{
+				simple_sequence instrument: 5, base: 290, amount: 4, interval: 30, direction: 0, wait: 0.125, attack: 0, release: 0.3, mod: 4, depth: 4000, pan: -0.8, amplitude: 0.5;
+			}
+		}	
+
+		if i == 10{
+			simple_sequence instrument: 5, base: 90, amount: 4, interval: 0, wait: 0.125, attack: 0, release: 0.3, mod: 6, depth: 4000, pan: -0.9, amplitude: 0.5;
+		}
+
+		if vuelta > 1{
+			if i == 12{
+				simple_sequence instrument: 5, base: 190, amount: 4, interval: 15, direction: 0, wait: 0.125, attack: 0, release: 0.3, mod: 5, depth: 4000, pan: 0.7, amplitude: 0.5;
+			}
+		}
+
+		if i == 14{
+			if vuelta == 4{
+				cantidad = 5;
+			}else{
+				cantidad = 4;
+			}
+			simple_sequence instrument: 5, base: 90, amount: cantidad, interval: 15, direction: 0, wait: 0.125, attack: 0, release: 0.3, mod: 7, depth: 4000, pan: 0.9, amplitude: 0.5, delaytime: 1.25, feedback: 0.9;
+		}
+
+		wait 0.25;
+		i = i + 1;
+
+		if a[j] >= 0{
+			indice = a[j];
+			nota = notas[indice] * 2;
+			basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0, amplitude: 0.25, delaytime: 3, feedback: 0.2;
+			wait 0.5;
+			indice = b[j];
+			nota = notas[indice] * 2;
+			basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0.1, amplitude: 0.2, delaytime: 3, feedback: 0.2;
+			wait 0.5;
+			indice = c[j];
+			nota = notas[indice] * 2;
+			basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 2, cutoff: 600, q: 2, contour: 0.25, pan: 0.2, amplitude: 0.2, delaytime: 3, feedback: 0.2;
+			wait 0.5;
+		}
+
+		j = j + 1;
+
+		if j == 128 {
+			j = 0;
+		}
+	}
+	vuelta = vuelta + 1;
+}
+
+# bang!!!
+
+indice = a[j];
+nota = notas[indice] * 2;
+basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 8, cutoff: 600, q: 2, contour: 0.25, pan: 0, amplitude: 0.2;
+wait 0.5;
+indice = b[j];
+nota = notas[indice] * 2;
+basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 8, cutoff: 600, q: 2, contour: 0.2, pan: 0.1, amplitude: 0.2;
+wait 0.5;
+indice = c[j];
+nota = notas[indice] * 2;
+basic_synth frequency: nota, attack: 0.1, sustain: 4, release: 8, cutoff: 600, q: 2, contour: 0.2, pan: 0.2, amplitude: 0.2;
+wait 0.5;

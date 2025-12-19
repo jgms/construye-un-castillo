@@ -1,0 +1,194 @@
+# ayer salieron del mar dos vacas, muertas
+
+notas=[75,78.75,83.75,87.5,93.75,97.5,105,108.75,112.5,116.25,120,127.5,131.25,137.5,141.25,146.25,150,157.5,167.5,175,187.5,195,210,217.5,225,232.5,240,255,262.5,275,282.5,292.5,300,315,335,350,375,390,420,435,450,465,480,510,525,550,565,585,600,630,670,700,750,780,840,870,900,930,960,1020,1050,1100,1130,1170,1200]; #65
+
+bases = [17,8,10,1,11,6,13,4,18,2,13,2,11,8,10,4,17,4]; #18;
+
+pulse 173;
+
+octavas = [1,4,2,4,1];
+
+espera = 15;
+pan = -0.5;
+i = 10;
+j = 0;
+repeat 8{
+	indice = bases[i];
+	octava = octavas[j];	
+	nota = notas[indice] * octava;
+
+	simple_sequence instrument: 4, base: nota, amount: 9, interval: 0, wait: espera, attack: 5, sustain: 0.5, release: 2, cutoff: 900, contour: 0.2, pan: pan, amplitude: 0.15, delaytime: 4;
+	pausa = 18 - i;
+	wait pausa;
+
+	pan = pan + 0.125;
+	espera = espera + 1;
+	i = i + 1;
+
+	j = j + 1;
+
+	if j == 5{
+		j = 0;
+	}
+}
+
+indices = [0,0,0,0,0];
+pans = [0,-0.9,0.7,-0.7,0.9];
+limites = [18,3,5,7,9];
+espera = 1;
+
+repeat 4{
+	repeat 18{
+		j = 0;
+		repeat 5{
+			i = indices[j]; 
+			indice = bases[i];
+			top = notas[indice] * 8;
+			indice = indice - 1;
+			bottom = notas[indice] * 8;
+			pan = pans[j];
+			lfo = j + 2;
+			amp = 0.1;
+
+			if i == 0{
+				amp = 0.25;
+			}
+
+			simple_wave_lfo wave: 0, bottom: bottom, top: top, attack: 0.01, sustain: 0.5, release: 4, lfo: lfo, pan: pan, amplitude: amp, delaytime: 1.5, feedback: 0.4;
+			
+
+			i = i + 1;
+
+			if i == limites[j]{
+				indices[j] = 0;
+			}else{
+				indices[j] = i;
+			}
+
+
+			j = j + 1;	
+		}
+		wait espera;
+		espera = espera + 0.0002;
+	}
+}
+
+wait 4;
+
+basesb = [17,8,10,0,11,6,13,4,18,2,13,2,11,8,10,4,17,4,3,2,1,0]; #22;
+
+espera = 15;
+pan = -0.5;
+i = 0;
+repeat 14{
+	indice = basesb[i];	
+	nota = notas[indice] * 8;
+
+	simple_sequence instrument: 4, base: nota, amount: 3, interval: 0, wait: espera, attack: 5, sustain: 0.5, release: 2, cutoff: 1000, contour: 0.2, pan: pan, amplitude: 0.12, delaytime: 4;
+	pausa = 14 - i;
+	wait pausa;
+
+	pan = pan + 0.05;
+	espera = espera + 1;
+	i = i + 1;
+}
+
+wait 12;
+
+i = 14;
+vuelta = 1;
+repeat 7{
+	indice = basesb[i];
+
+	repeticiones = i + 1;
+
+	inicial = indice;
+	profundidad = 1345;
+	repeat repeticiones{
+		nota = notas[indice];
+
+		moda = 1;
+		modb = 5;
+
+		if nota >= 600{
+			moda = 0.125;
+			modb = 2;
+		}else{
+			if nota >= 300{
+				moda = 0.25;
+				modb = 3;
+			}else{
+				if nota >= 150{
+					moda = 0.5;
+					modb = 4;
+				}
+			}
+		}
+
+		if indice == inicial{
+			amplitud = 0.4;
+		}else{
+			amplitud = 0.2;
+		}
+
+		fm_in_parallel frequency: nota, attack: 0.005, sustain: 0.99, release: 4.005, modone: 3, depthone: 50, oneattack: 0.3, onesustain:0, onerelease: 0.7, modtwo: moda, depthtwo: profundidad, twoattack: 0.7, twosustain:0, tworelease: 0.2, pan: 0.8, amplitude: amplitud, delaytime: 1.75;
+		wait 0.125;
+		fm_in_parallel frequency: nota, attack: 0.005, sustain: 0.99, release: 4.005, modone: 2, depthone: 1000, oneattack: 0.6, onesustain:0, onerelease: 0.6, modtwo: modb, depthtwo: profundidad, twoattack: 0.9, twosustain:0, tworelease: 0.5, pan: -0.8, amplitude: amplitud, delaytime: 1.25;
+		wait 0.5;
+
+		indice = indice + i;
+
+		if indice > 64{
+			indice = inicial;
+		}
+		profundidad = profundidad * 1.08;
+	}
+
+
+	if vuelta > 3{
+		if vuelta < 7{
+			repeat 18{
+				j = 0;
+				repeat 5{
+					k = indices[j]; 
+					indice = bases[k];
+					top = notas[indice] * 8;
+					indice = indice - 1;
+					bottom = notas[indice] * 8;
+					pan = pans[j];
+					lfo = j + 2;
+					amp = 0.1;
+
+					if k == 0{
+						amp = 0.25;
+					}
+
+					simple_wave_lfo wave: 0, bottom: bottom, top: top, attack: 0.01, sustain: 0.5, release: 4, lfo: lfo, pan: pan, amplitude: amp, delaytime: 1.5, feedback: 0.4;
+					
+
+					k = k + 1;
+
+					if k == limites[j]{
+						indices[j] = 0;
+					}else{
+						indices[j] = k;
+					}
+
+
+					j = j + 1;	
+				}
+				wait 1;
+			}
+			if vuelta == 6{
+				wait 4;
+			}else{
+				wait 1;
+			}
+		}
+	}else{
+		wait 8;
+	}
+
+	vuelta = vuelta + 1;
+	i = i + 1;
+}

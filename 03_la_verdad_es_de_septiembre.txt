@@ -1,0 +1,94 @@
+# la verdad, es de septiembre
+
+pulse 82.5;
+
+bassline = [840,585,700,750,630,780,600,870,480,960];
+melodia = [840,585,390,700,390,350,750,630,375,780,350,600,870,335,335,480,335,960,840,300,315,585,300,700,750,390,350,630,375,780,600,350,870,335,335,480,960,335,840,300,315,585,700,300,750,335,390,630,780,335,375,600,870,315,480,960]; #300
+
+# intro
+
+loop_sample bank: 5, sample: 4, rate: -1.2, duration: 28, pan: 1, amplitude: 0.7;
+loop_sample bank: 5, sample: 4, rate: 1.2, duration: 28, pan: -1, amplitude: 0.7;
+
+melodia = [840,585,390,700,390,350,750,630,375,780,350,600,870,335,335,480,335,960,840,300,315,585,300,700,750,390,350,630,375,780,600,350,870,335,335,480,960,335,840,300,315,585,700,300,750,335,390,630,780,335,375,600,870,315,480,960]; #300
+
+i = 0;
+repeat 56{
+	if melodia[i] < 400{
+		nota = melodia[i] * 4;
+		pan = 0.6;
+		repeat 2{
+			simple_wave wave: 2, frequency: nota, attack: 0.15, sustain: 0.5, release: 0.75, pan: pan, amplitude: 0.3, delaytime: 0.75, feedback: 0.9;
+			nota = nota + 2;
+			pan = pan * -1;
+		}
+	}
+	wait 0.5;
+	i = i + 1;
+}
+
+nota = 1200;
+pan = 0.6;
+repeat 2{
+	simple_wave wave: 2, frequency: nota, attack: 0.15, sustain: 0.5, release: 0.75, pan: pan, amplitude: 0.3, delaytime: 0.75, feedback: 0.9;
+	nota = nota + 2;
+	pan = pan * -1;
+}
+
+
+vuelta = 1;
+repeat 5{
+	if vuelta == 2{
+		loop_sample bank: 5, sample: 4, rate: -0.6, duration: 28, pan: 1, amplitude: 0.75;
+		loop_sample bank: 5, sample: 4, rate: 0.6, duration: 28, pan: -1, amplitude: 0.75;
+	}
+	i = 0;
+	repeat 10{
+		nota = bassline[i] * 0.25; #bass line
+		basic_fm_env frequency: nota, mod: 0.51, depth: 1700, attack: 0, sustain: 0.5, release: 1, modattack: 0.05, modsustain: 0, modrelease: 0.75, pan: 0, amplitude: 0.3, delaytime: 0.75, feedback: 0.6;
+		wait 0.5;
+		i = i + 1;
+	}
+	if vuelta > 2{
+		play_sample bank: 2, sample: 3, pan: 0.1, amplitude: 1;
+	}
+	wait 2;
+	vuelta = vuelta + 1;
+}
+
+basic_fm_env frequency: 150, mod: 0.51, depth: 1700, attack: 0, sustain: 0.5, release: 1, modattack: 0.05, modsustain: 0, modrelease: 0.75, pan: 0, amplitude: 0.3, delaytime: 0.75, feedback: 0.6;
+
+
+wait 4;
+
+loop_sample bank: 5, sample: 4, rate: -0.3, duration: 28, pan: 1, amplitude: 0.7;
+loop_sample bank: 5, sample: 4, rate: 0.3, duration: 28, pan: -1, amplitude: 0.7;
+
+i = 0;
+repeat 56{
+	if melodia[i] < 400{
+		nota = melodia[i] * 4;
+		pan = 0.6;
+		repeat 2{
+			simple_wave wave: 2, frequency: nota, attack: 0.15, sustain: 0.5, release: 0.75, pan: pan, amplitude: 0.3, delaytime: 0.75, feedback: 0.9;
+			nota = nota + 2;
+			pan = pan * -1;
+		}
+	}else{
+		basic_fm_env frequency: melodia[i], mod: 0.51, depth: 1700, attack: 0, sustain: 0.5, release: 1, modattack: 0.05, modsustain: 0, modrelease: 0.75, pan: 0, amplitude: 0.25, delaytime: 0.75, feedback: 0.6;
+	}
+	wait 0.5;
+	i = i + 1;
+}
+nota = 1200;
+pan = 0.6;
+repeat 2{
+	simple_wave wave: 2, frequency: nota, attack: 0.15, sustain: 0.5, release: 0.75, pan: pan, amplitude: 0.3, delaytime: 0.75, feedback: 0.9;
+	nota = nota + 2;
+	pan = pan * -1;
+}
+
+play_sample bank: 5, sample: 4, rate: -0.3,  pan: 0, amplitude: 1, delaytime: 0.25, feedback: 0.9;
+wait 2;
+play_sample bank: 5, sample: 4, rate: 0.6,  pan: 0.1, amplitude: 0.7, delaytime: 1, feedback: 0.9;
+play_sample bank: 5, sample: 4, rate: 1.2,  pan: -0.1, amplitude: 0.7, delaytime: 0.5, feedback: 0.9;

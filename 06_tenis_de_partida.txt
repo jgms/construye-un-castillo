@@ -1,0 +1,73 @@
+#tenis de partida
+
+escala=[146.25,150,157.5,167.5,175,187.5,195,210,217.5,225,232.5,240,255,262.5,275,282.5,292.5,300,315,335,350];
+
+pulse 160;
+
+vuelta = 1;
+
+intervalosescala = [3,7,5,9,11];
+intervaloescala = 0;
+
+interval = 25;
+pan = 1;
+play = true;
+
+repeat 6{
+	inotas = 0;
+
+	repeat 21{
+
+		if play{
+			if vuelta > 5{
+				wait 1.5;
+				simple_sequence instrument: 2, amount: 7, base: 150, interval: 150, direction: 1, wait: 0.5, attack: 0, sustain: 0, release: 0.4, pan: 0, amplitude: 0.2;
+			}
+			
+			simple_sequence amount: 7, base: 1200, interval: interval, direction: 0, wait: 0, attack: 0, sustain: 0, release: 4, pan: pan, amplitude: 0.1;
+			interval = interval + 25;
+
+			if interval == 200{
+				interval = 25;
+			}
+
+			pan = pan - 0.1;
+
+			if pan < -0.9{
+				pan = 1;
+			}
+		}
+
+		play = !play;
+
+		if vuelta < 6{
+
+			if vuelta > 3{
+				if inotas < 11{
+					basic_fm_env frequency: escala[inotas], release: 4, modrelease: 2.5, mod: 0.5, depth: 5000, amplitude: 0.3;
+				}
+			}
+
+			nota = escala[inotas] * 4;
+			simple_wave wave: 3, frequency: nota, release: 1, amplitude: 0.6, delaytime: 0.5, feedback: 0.8;
+			wait 0.75;
+
+			siguiente = inotas + intervalosescala[intervaloescala];
+
+			if siguiente > 20{
+				inotas = siguiente - 21;
+			}else{
+				inotas = siguiente;
+			}
+		}
+	}
+
+	if vuelta == 3{
+		wait 1;
+	}
+	if vuelta == 5{
+		wait 3;
+	}
+	intervaloescala = intervaloescala + 1;
+	vuelta = vuelta + 1;
+} 

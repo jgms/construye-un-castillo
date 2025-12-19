@@ -1,0 +1,38 @@
+# no barras bajo la alfombra, he escondido una canción
+
+pulse 103;
+
+loop_sample_lfo bank: 4, sample: 21, top: 0.9, bottom: 0.4, lfo: 0.2, duration: 68, envelope: 1, sustain: 64, release: 4, pan: -0.85, amplitude: 0.5, delaytime: 0.125, feedback: 0.9;
+loop_sample_lfo bank: 4, sample: 20, top: 0.9, bottom: 0.4, lfo: 0.2, duration: 68, envelope: 1, sustain: 64, release: 4, pan: 0.85, amplitude: 0.6, delaytime: 0.125, feedback: 0.9;
+
+play_sample bank: 5, sample: 16, rate: 0.2975, pan: -0.2; #4 compases
+wait 16;
+
+vuelta = 1;
+repeat 2{
+	if vuelta == 2{
+		loop_sample_lfo bank: 2, sample: 2, top: 3, bottom: 0.3, lfo: 0.1, duration: 56, envelope: 1, sustain: 20, release: 36, pan: 0, amplitude: 0.9, delaytime: 0.25, feedback: 0.9;
+	}
+	play_sample bank: 5, sample: 16, rate: 0.2975, pan: -0.2; #4 compases
+	repeat 4{
+
+		play_sample bank: 5, sample: 16, rate: 1.19, pan: 0.4, delaytime: 0.75, feedback: 0.9;#1 compás
+
+		wait 4;
+	}
+	ratea = 1;
+	rateb = 1;
+	repeat 4{
+		play_sample bank: 4, sample: 17, rate: ratea, pan: 0.15;
+		wait 0.75;
+		play_sample bank: 4, sample: 18, rate: ratea, pan: -0.15;
+		wait 0.25;
+		ratea = ratea * 1.1;
+		rateb = rateb * 1.3;
+	}
+	play_sample bank: 4, sample: 17, rate: ratea, pan: 0.15, delaytime: 1.5, feedback: 0.9;
+	vuelta = vuelta + 1;
+}
+play_sample bank: 5, sample: 16, rate: 2.38, pan: 0.4, delaytime: 0.75, feedback: 0.9;
+wait 2;
+play_sample bank: 5, sample: 16, rate: 0.2975, pan: -0.2, delaytime: 1.25, feedback: 0.9; #4 compases

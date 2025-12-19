@@ -1,0 +1,116 @@
+# nunca quiso tener nombre
+
+pulse 135;
+
+pans = [-0.9,1,0.6,-0.5,-0.4,0.2,-0.8,0.3,0.7,-0.1];
+p = 0; # index for pans
+
+vuelta = 1;
+repeat 9{
+	if vuelta == 2{
+		play_sample bank: 3, sample: 4, rate: 0.5, pan: 0, amplitude: 0.25;
+	}
+	if vuelta == 7{
+		play_sample bank: 3, sample: 3, rate: 0.5, pan: 0, amplitude: 0.25;
+	}
+	sample = 9;
+	repeat 6{
+		play_sample bank: 3, sample: sample, rate: 6, pan: pans[p], amplitude: 0.35, delaytime: 0.75, feedback: 0.8;
+		wait 0.5;
+
+		p = p + 1;
+		if p == 10{
+			p = 0;
+		}
+
+		if vuelta > 4{
+			if vuelta < 9{
+				play_sample bank: 1, sample: sample, rate: 6, pan: pans[p], amplitude: 0.4, delaytime: 4.5, feedback: 0.23;
+				wait 0.5;
+
+				p = p + 1;
+				if p == 10{
+					p = 0;
+				}
+			}
+		}
+		sample = sample - 1;
+	}
+	vuelta = vuelta + 1; 
+}
+
+repeat 3{
+	play_sample bank: 0, sample: 10, rate: 1, pan: pans[p], amplitude: 0.4;
+	wait 1;
+
+	p = p + 1;
+	if p == 10{
+		p = 0;
+	}
+
+	repeat 2{
+		play_sample bank: 0, sample: 10, rate: 1.4, pan: pans[p], amplitude: 0.3;
+		wait 0.25;
+
+		p = p + 1;
+		if p == 10{
+			p = 0;
+		}
+	}
+
+	loop_sample_lfo bank: 0, sample: 10, top: 1.2, bottom: 0.4, lfo: 1.4, duration: 2, envelope: 1, attack: 0, sustain: 1.75, release: 0.2, pan: pans[p] , amplitude: 0.2;
+	wait 2;
+	p = p + 1;
+	if p == 10{
+		p = 0;
+	}
+
+	play_sample bank: 0, sample: 10, rate: 0.8, pan: pans[p], amplitude: 0.35, delaytime: 0.75, feedback: 0.7;
+	wait 0.5;
+	p = p + 1;
+	if p == 10{
+		p = 0;
+	}
+}
+
+wait 1.5;
+
+play_sample bank: 3, sample: 4, rate: 0.5, pan: 0, amplitude: 0.25;
+loop_sample_lfo bank: 0, sample: 10, top: 1.2, bottom: 0.4, lfo: 2.1, duration: 3, envelope: 1, attack: 0, sustain: 2.75, release: 0.2, pan: pans[p] , amplitude: 0.2;
+wait 3;
+
+p = p + 1;
+if p == 10{
+	p = 0;
+}
+
+play_sample bank: 0, sample: 10, rate: 1, pan: pans[p], amplitude: 0.35;
+
+p = p + 1;
+if p == 10{
+	p = 0;
+}
+
+sample = 9;
+repeat 6{
+	play_sample bank: 3, sample: sample, rate: 6, pan: pans[p], amplitude: 0.35;
+	wait 0.5;
+	sample = sample - 1;
+	p = p + 1;
+	if p == 10{
+		p = 0;
+	}
+}
+
+loop_sample_lfo bank: 0, sample: 10, top: 1.2, bottom: 0.4, lfo: 1.4, duration: 2, envelope: 1, attack: 0, sustain: 1.75, release: 0.2, pan: pans[p] , amplitude: 0.2;
+wait 2;
+
+p = p + 1;
+if p == 10{
+	p = 0;
+}
+
+repeat 2{
+	play_sample bank: 0, sample: 10, rate: 0.8, pan: pans[p], amplitude: 0.4;
+	wait 0.5;
+}

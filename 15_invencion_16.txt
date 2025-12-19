@@ -1,0 +1,185 @@
+#invención 16
+
+top = [565,900,0,0,335,0,315,0,0,375,870,0,600,0,420,510,550,300,0,465,350,335,450,585,450,0,375,0,0,510,375,0,780,0,0,420,600,350,0,550,565,630,750,0,550,0,0,480,435,840,0,840,315,840,0,0,510,750,0,0,0,525,350,0,0,550,0,480,0,600,0,900,550,420,510,900,0,840,375,0,0,0,630,525,510,0,315,0,0,550,0,315,350,870,0,870,450,375,0,0,335,565,0,0,0,0,0,335,670,350,0,630,0,510,550,525,0,600,525,0,315,315,0,550,0,0,450,870];
+
+bottom = [0,0,137.5,0,0,0,275,0,0,0,262.5,0,195,150,0,137.5,0,105,0,225,120,108.75,0,0,112.5,0,0,120,175,0,195,0,282.5,187.5,232.5,282.5,0,240,0,108.75,0,195,240,0,0,112.5,131.25,0,131.25,225,0,0,195,232.5,232.5,0,105,0,0,116.25,108.75,0,217.5,292.5,0,262.5,0,137.5,262.5,137.5,0,217.5,292.5,282.5,0,0,225,217.5,0,157.5,225,0,292.5,232.5,120,262.5,0,0,167.5,0,137.5,175,175,210,0,0,146.25,255,0,0,0,0,292.5,0,141.25,0,120,108.75,0,0,0,0,0,131.25,105,0,232.5,0,167.5,275,0,0,0,127.5,0,112.5,112.5,0]; 
+
+pulse 90;
+
+#a
+
+repeat 2{
+	i = 0;
+	repeat 20{
+		if top[i] > 0{
+			basic_synth frequency: top[i], detune: 3.2, release: 2, cutoff: 2000, q: 5, contour: 0.2, pan: 0.6, amplitude: 0.3, delaytime: 1, feedback: 0.2;
+		}
+		if bottom[i] > 0{
+			basic_fm_env frequency: bottom[i], release: 2, modrelease: 1.5, mod: 2.01, depth: 3500, pan: -0.6, amplitude: 0.4, delaytime: 0.375;
+		}
+		wait 0.25;
+		i = i + 1;
+	}
+}
+
+
+repeat 2{
+	i = 20;
+	repeat 3{
+		if top[i] > 0{
+			basic_synth frequency: top[i], detune: 3.2, release: 2, cutoff: 2000, q: 5, contour: 0.2, pan: 0.6, amplitude: 0.3, delaytime: 1, feedback: 0.2;
+		}
+		if bottom[i] > 0{
+			basic_fm_env frequency: bottom[i], release: 2, modrelease: 1.5, mod: 2.01, depth: 3500, pan: -0.6, amplitude: 0.4, delaytime: 0.375;
+		}
+		wait 0.25;
+		i = i + 1;
+	}
+}
+
+repeat 3{
+	i = 123;
+	repeat 5{
+		if top[i] > 0{
+			basic_synth frequency: top[i], detune: 3.2, release: 2, cutoff: 2000, q: 5, contour: 0.2, pan: 0.6, amplitude: 0.3, delaytime: 1, feedback: 0.2;
+		}
+		if bottom[i] > 0{
+			basic_fm_env frequency: bottom[i], release: 2, modrelease: 1.5, mod: 2.01, depth: 3500, pan: -0.6, amplitude: 0.4, delaytime: 0.375;
+		}
+		wait 0.25;
+		i = i + 1;
+	}
+}
+
+wait 1;
+
+#b
+
+repeat 2{
+	repeat 2{
+		i = 70;
+		repeat 16{
+			if top[i] > 0{
+				basic_synth frequency: top[i], detune: 3.2, release: 2, cutoff: 2000, q: 5, contour: 0.2, pan: 0.6, amplitude: 0.3, delaytime: 1, feedback: 0.2;
+			}
+			if bottom[i] > 0{
+				basic_fm_env frequency: bottom[i], release: 2, modrelease: 1.5, mod: 2.01, depth: 3500, pan: -0.6, amplitude: 0.4, delaytime: 0.375;
+			}
+			wait 0.25;
+			i = i + 1;
+		}
+	}
+
+
+	i = 90;
+	repeat 9{
+		if top[i] > 0{
+			basic_synth frequency: top[i], detune: 3.2, release: 2, cutoff: 2000, q: 5, contour: 0.2, pan: 0.6, amplitude: 0.3, delaytime: 1, feedback: 0.2;
+		}
+		if bottom[i] > 0{
+			basic_fm_env frequency: bottom[i], release: 2, modrelease: 1.5, mod: 2.01, depth: 3500, pan: -0.6, amplitude: 0.4, delaytime: 0.375;
+		}
+		wait 0.25;
+		i = i + 1;
+	}
+}
+
+repeat 4{
+	i = 20;
+	repeat 3{
+		if top[i] > 0{
+			basic_synth frequency: top[i], detune: 3.2, release: 2, cutoff: 2000, q: 5, contour: 0.2, pan: 0.6, amplitude: 0.3, delaytime: 1, feedback: 0.2;
+		}
+		if bottom[i] > 0{
+			basic_fm_env frequency: bottom[i], release: 2, modrelease: 1.5, mod: 2.01, depth: 3500, pan: -0.6, amplitude: 0.4, delaytime: 0.375;
+		}
+		wait 0.25;
+		i = i + 1;
+	}
+}
+
+repeat 3{
+	i = 123;
+	repeat 5{
+		if top[i] > 0{
+			basic_synth frequency: top[i], detune: 3.2, release: 2, cutoff: 2000, q: 5, contour: 0.2, pan: 0.6, amplitude: 0.3, delaytime: 1, feedback: 0.2;
+		}
+		if bottom[i] > 0{
+			basic_fm_env frequency: bottom[i], release: 2, modrelease: 1.5, mod: 2.01, depth: 3500, pan: -0.6, amplitude: 0.4, delaytime: 0.375;
+		}
+		wait 0.25;
+		i = i + 1;
+	}
+}
+
+wait 1.5;
+
+#c
+
+repeat 2{
+	i = 0;
+	repeat 20{
+		if top[i] > 0{
+			basic_synth frequency: top[i], detune: 3.2, release: 2, cutoff: 2000, q: 5, contour: 0.2, pan: 0.6, amplitude: 0.3, delaytime: 1, feedback: 0.2;
+		}
+		if bottom[i] > 0{
+			basic_fm_env frequency: bottom[i], release: 2, modrelease: 1.5, mod: 2.01, depth: 3500, pan: -0.6, amplitude: 0.4, delaytime: 0.375;
+		}
+		wait 0.25;
+		i = i + 1;
+	}
+}
+
+
+repeat 3{
+	i = 20;
+	repeat 3{
+		if top[i] > 0{
+			basic_synth frequency: top[i], detune: 3.2, release: 2, cutoff: 2000, q: 5, contour: 0.2, pan: 0.6, amplitude: 0.3, delaytime: 1, feedback: 0.2;
+		}
+		if bottom[i] > 0{
+			basic_fm_env frequency: bottom[i], release: 2, modrelease: 1.5, mod: 2.01, depth: 3500, pan: -0.6, amplitude: 0.4, delaytime: 0.375;
+		}
+		wait 0.25;
+		i = i + 1;
+	}
+}
+
+i = 0;
+repeat 8{
+	if top[i] > 0{
+		basic_synth frequency: top[i], detune: 3.2, release: 2, cutoff: 2000, q: 5, contour: 0.2, pan: 0.6, amplitude: 0.3, delaytime: 1, feedback: 0.2;
+	}
+	if bottom[i] > 0{
+		basic_fm_env frequency: bottom[i], release: 2, modrelease: 1.5, mod: 2.01, depth: 3500, pan: -0.6, amplitude: 0.4, delaytime: 0.375;
+	}
+	wait 0.25;
+	i = i + 1;
+}
+
+i = 90;
+repeat 9{
+	if top[i] > 0{
+		basic_synth frequency: top[i], detune: 3.2, release: 2, cutoff: 2000, q: 5, contour: 0.2, pan: 0.6, amplitude: 0.3, delaytime: 1, feedback: 0.2;
+	}
+	if bottom[i] > 0{
+		basic_fm_env frequency: bottom[i], release: 2, modrelease: 1.5, mod: 2.01, depth: 3500, pan: -0.6, amplitude: 0.4, delaytime: 0.375;
+	}
+	wait 0.25;
+	i = i + 1;
+}
+
+repeat 8{
+	i = 20;
+	repeat 3{
+		if top[i] > 0{
+			basic_synth frequency: top[i], detune: 3.2, release: 2, cutoff: 2000, q: 5, contour: 0.2, pan: 0.6, amplitude: 0.3, delaytime: 1, feedback: 0.2;
+		}
+		if bottom[i] > 0{
+			basic_fm_env frequency: bottom[i], release: 2, modrelease: 1.5, mod: 2.01, depth: 3500, pan: -0.6, amplitude: 0.4, delaytime: 0.375;
+		}
+		wait 0.25;
+		i = i + 1;
+	}
+}
+
