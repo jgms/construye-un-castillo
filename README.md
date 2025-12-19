@@ -6,7 +6,7 @@
 
 This is a collection of sketches, experiments and silly sound musings, if you want to listen to any of these scripts you can copy it and paste it [here](https://jgms.github.io/eliane/), feel free to change stuff around and play with them to your taste, for further documentation about the syntax and synths you can go [here](https://github.com/jgms/eliane).
 
-If you only want to listen/download the music, recorded straight into Audacity, with neither effects nor EQ added, you can go [here](https://maravillosarealidad.bandcamp.com/album/construye-un-castillo-chalo-abajo).
+If you only want to listen/download the music you can go [here](https://maravillosarealidad.bandcamp.com/album/construye-un-castillo-chalo-abajo).
 
 #### ESP
 
@@ -14,6 +14,6 @@ If you only want to listen/download the music, recorded straight into Audacity, 
 
 Esta es una colección de apuntes, experimentos y tonterías sonoras, si quieres escuchar alguno de estos scripts puedes copiarlo y pegarlo [aquí](https://jgms.github.io/eliane/), puedes cambiar cosas y jugar como prefieras, para más información sobre la sintaxis y los sintes puedes ver [aquí](https://github.com/jgms/eliane).
 
-Si solo te apetece escuchar/descargar la música, la cual fue grabada directamente en Audacity, sin efectos ni EQ añadidos, puedes ir [aquí](https://maravillosarealidad.bandcamp.com/album/construye-un-castillo-chalo-abajo).
+Si solo te apetece escuchar/descargar la música puedes ir [aquí](https://maravillosarealidad.bandcamp.com/album/construye-un-castillo-chalo-abajo).
 
 
